@@ -11,7 +11,7 @@ export class AppHttpService {
   constructor(private http: HttpClient) { }
 
   public getHello(): Observable<any> {
-    return this.http.get<any>(environment.URL_FOR_BE + "/hello");
+    return this.http.get<any>(environment.URL_FOR_BE + "hello");
   }
 
 }

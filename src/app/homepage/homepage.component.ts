@@ -14,6 +14,6 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void { }
 
   callBE() {
-    this.appHttpService.getHello().subscribe(str => this.hello = str);
+    this.appHttpService.getHello().subscribe(str => this.hello = str.hello);
   }
 }
