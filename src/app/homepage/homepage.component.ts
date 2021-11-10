@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppHttpService } from '../services/app-http.service';
 
 @Component({
   selector: 'app-homepage',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  public hello: string = "";
+  constructor(private appHttpService: AppHttpService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  callBE() {
+    this.appHttpService.getHello().subscribe(str => this.hello = str);
   }
-
 }
