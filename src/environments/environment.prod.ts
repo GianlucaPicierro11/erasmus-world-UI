@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  BASE_URL: "",
-  URL_FOR_BE: "https://erasmus-world-api.herokuapp.com/",
+  API_URL_TEST: 'https://erasmus-world-api.herokuapp.com/test/',
+  AUTH_API: 'https://erasmus-world-api.herokuapp.com/auth/'
 };

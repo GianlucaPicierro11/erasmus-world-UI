@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  BASE_URL: "",
-  URL_FOR_BE: "http://localhost:8080/",
+  API_URL_TEST: 'http://localhost:8080/test/',
+  AUTH_API: 'http://localhost:8080/auth/'
 };
 
 /*
