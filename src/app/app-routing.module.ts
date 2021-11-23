@@ -7,16 +7,17 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
+import { RoutesEnum } from './enumerations/routes.enum';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'user', component: BoardUserComponent },
-  { path: 'mod', component: BoardModeratorComponent },
-  { path: 'admin', component: BoardAdminComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: RoutesEnum.HOME, component: HomeComponent },
+  { path: RoutesEnum.LOGIN, component: LoginComponent },
+  { path: RoutesEnum.REGISTER, component: RegisterComponent },
+  { path: RoutesEnum.PROFILE, component: ProfileComponent },
+  { path: RoutesEnum.USER, component: BoardUserComponent },
+  { path: RoutesEnum.MOD, component: BoardModeratorComponent },
+  { path: RoutesEnum.ADMIN, component: BoardAdminComponent },
+  { path: '', redirectTo: RoutesEnum.HOME, pathMatch: 'full' }
 ];
 
 @NgModule({

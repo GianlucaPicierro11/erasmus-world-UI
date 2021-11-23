@@ -1,41 +1,40 @@
-<div id="#app">
-    <div class="jumbotron">
-        <a href="#" class="navbar-brand">Erasmus World Application</a>
-        <ul class="navbar-nav mr-auto" routerLinkActive="active">
-            <li class="nav-item">
-                <a href="/home" class="nav-link" routerLink="home">Home </a>
-            </li>
-            <li class="nav-item" *ngIf="showAdminBoard">
-                <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
-            </li>
-            <li class="nav-item" *ngIf="showModeratorBoard">
-                <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
-            </li>
-            <li class="nav-item">
-                <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user">User</a>
-            </li>
-        </ul>
+<div id="app">
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <button mat-icon-button aria-label="Menu button" [matMenuTriggerFor]="menu">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>Test</button>
+                <button mat-menu-item>Test2</button>
+            </mat-menu>
+            <span fxShow fxHide.lt-sm="true">Erasmus World App</span>
+            <span fxHide fxShow.lt-sm="true">Erasmus World App</span>
+            <span class="toolbar-spacer"></span>
+            <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"
+                [matMenuTriggerFor]="loginMenu" fxHide fxShow.lt-sm="true">
+                <mat-icon>person</mat-icon>
+            </button>
+            <mat-menu #loginMenu="matMenu">
+                <div *ngIf="!isLoggedIn">
+                    <button mat-menu-item (click)="goToLogin()">Login</button>
+                    <button mat-menu-item (click)="goToRegistration()">Register</button>
+                </div>
+            </mat-menu>
+            <div *ngIf="!isLoggedIn">
+                <button mat-button fxShow="true" fxShow fxHide.lt-sm="true" (click)="goToLogin()">Login</button>
+                <button mat-raised-button fxShow="true" fxShow fxHide.lt-sm="true"
+                    (click)="goToRegistration()">Register</button>
+            </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
 
-        <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
-            <li class="nav-item">
-                <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
-            </li>
-            <li class="nav-item">
-                <a href="/login" class="nav-link" routerLink="login">Login</a>
-            </li>
-        </ul>
-
-        <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-            <li class="nav-item">
-                <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
-            </li>
-            <li class="nav-item">
-                <a href class="nav-link" (click)="logout()">LogOut</a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="container">
+    <div id="container">
         <router-outlet></router-outlet>
     </div>
+
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+        </mat-toolbar-row>
+    </mat-toolbar>
 </div>

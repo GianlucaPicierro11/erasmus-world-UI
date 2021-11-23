@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { RoutesEnum } from 'app/enumerations/routes.enum';
+import { TokenStorageService } from 'app/services/token-storage/token-storage.service';
 import { UserService } from 'app/services/user/user.service';
 
 @Component({
@@ -8,18 +11,15 @@ import { UserService } from 'app/services/user/user.service';
 })
 export class HomeComponent implements OnInit {
 
-  content?: string;
+  isLoggedIn = false;
+  hide = true;
 
-  constructor(private userService: UserService) { }
+  constructor(private tokenStorageService: TokenStorageService, private router: Router) { }
 
   ngOnInit(): void {
-    this.userService.getPublicContent().subscribe(
-      data => {
-        this.content = data;
-      },
-      err => {
-        this.content = JSON.parse(err.error).message;
-      }
-    );
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    if (!this.isLoggedIn) {
+      this.router.navigateByUrl(RoutesEnum.LOGIN);
+    }
   }
 }
