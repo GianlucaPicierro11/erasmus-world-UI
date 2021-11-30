@@ -27,3 +27,47 @@ body {
 .padding-top-10 {
     padding-top: 10px;
 }
+
+.snackbarSuccess {
+    background-color: white;
+    border-color: green !important;
+    border-left: 15px solid;
+    color: black;
+}
+
+.snackbarError {
+    background-color: white;
+    border-color: red !important;
+    border-left: 15px solid;
+    color: black;
+}
+
+.snackbarInfo {
+    background-color: white;
+    border-color: #06c !important;
+    border-left: 15px solid;
+    color: black;
+}
+
+.snackbarWarn {
+    background-color: white;
+    border-color: orange !important;
+    border-left: 15px solid;
+    color: black;
+}
+
+.spinner {
+    top: 50vh;
+    left: 50vw;
+    position: fixed;
+}
+
+.dark-overlay {
+    background-color: rgba(226, 222, 222, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    z-index: 1000;
+}

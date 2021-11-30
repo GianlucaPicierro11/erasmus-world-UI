@@ -1,12 +1,20 @@
 <div class="row full-height align-items-center justify-content-center">
     <div class="col-10 align-self-center" [formGroup]="form">
         <div class="row">
-            <div class="col">
+            <div class="col" fxShow fxHide.lt-sm="true">
                 <mat-form-field appearance="fill" class="full-width">
                     <mat-label>Name</mat-label>
                     <input matInput #name formControlName="name">
                 </mat-form-field>
             </div>
+            <div class="col" fxShow fxHide.lt-sm="true">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Surname</mat-label>
+                    <input matInput #surname formControlName="surname">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row" fxHide fxShow.lt-sm="true">
             <div class="col">
                 <mat-form-field appearance="fill" class="full-width">
                     <mat-label>Surname</mat-label>
@@ -32,27 +40,52 @@
             <div class="col">
                 <mat-form-field appearance="fill" class="full-width">
                     <mat-label>Birthdate</mat-label>
-                    <input matInput #birthDate formControlName="birthDate">
+                    <input matInput [matDatepicker]="birthDate" formControlName="birthDate">
+                    <mat-datepicker-toggle matSuffix [for]="birthDate"></mat-datepicker-toggle>
+                    <mat-datepicker #birthDate startView="year" [startAt]="startDate"></mat-datepicker>
                 </mat-form-field>
             </div>
             <div class="col">
-                <mat-form-field appearance="fill" class="full-width">
+                <mat-form-field class="full-width" appearance="fill">
                     <mat-label>Nationality</mat-label>
-                    <input matInput #nationality formControlName="nationality">
+                    <input type="text" matInput #nationality formControlName="nationality"
+                        [matAutocomplete]="autoNationality">
+                    <mat-autocomplete #autoNationality="matAutocomplete" [displayWith]="displayFnNationality">
+                        <mat-option *ngFor="let nationality of filteredNationalities | async" [value]="nationality">
+                            {{nationality.nationality}}
+                        </mat-option>
+                    </mat-autocomplete>
                 </mat-form-field>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <mat-form-field appearance="fill" class="full-width">
+                <mat-form-field class="full-width" appearance="fill">
                     <mat-label>Student At</mat-label>
-                    <input matInput #studentAt formControlName="studentAt">
+                    <input type="text" matInput #university formControlName="university"
+                        [matAutocomplete]="autoUniversity">
+                    <mat-autocomplete #autoUniversity="matAutocomplete" [displayWith]="displayFnUniversity">
+                        <mat-option *ngIf="isLoadingUniversities" class="is-loading">
+                            <mat-spinner diameter="50"></mat-spinner>
+                        </mat-option>
+                        <ng-container *ngIf="!isLoadingUniversities">
+                            <mat-option *ngFor="let university of filteredUniversities" [value]="university">
+                                <span>{{ university.university }}</span>
+                            </mat-option>
+                        </ng-container>
+                    </mat-autocomplete>
                 </mat-form-field>
             </div>
             <div class="col">
-                <mat-form-field appearance="fill" class="full-width">
+                <mat-form-field class="full-width" appearance="fill">
                     <mat-label>ESN Section</mat-label>
-                    <input matInput #esnSection formControlName="esnSection">
+                    <input type="text" matInput #esnSection formControlName="esnSection"
+                        [matAutocomplete]="autoEsnSection">
+                    <mat-autocomplete #autoEsnSection="matAutocomplete" [displayWith]="displayFnEsnSection">
+                        <mat-option *ngFor="let esnSection of filteredEsnSections | async" [value]="esnSection">
+                            {{esnSection.section}}
+                        </mat-option>
+                    </mat-autocomplete>
                 </mat-form-field>
             </div>
             <div class="col">
@@ -76,7 +109,8 @@
         </div>
         <div class="row">
             <div class="col">
-                <button mat-raised-button color="primary" class="full-width" (click)="register()">Register</button>
+                <button mat-raised-button color="primary" class="full-width" (click)="register()"
+                    [disabled]="this.form.invalid">Register</button>
             </div>
         </div>
     </div>

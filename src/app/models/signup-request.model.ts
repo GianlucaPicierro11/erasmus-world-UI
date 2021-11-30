@@ -4,9 +4,9 @@ export interface SignupRequestModel {
     email: string,
     phone: string,
     birthDate: string,
-    nationality: string,
-    studentAt: string,
-    esnSection: string,
+    nationalityId: number,
+    universityId: number,
+    esnSectionId: number,
     nrEsnCard: string,
     password: string
 }
