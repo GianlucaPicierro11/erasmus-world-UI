@@ -38,9 +38,12 @@ export class RegisterComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       phone: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
       birthDate: new FormControl('', [Validators.required, this.dateValidator]),
-      nationality: new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
-      university: new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
-      esnSection: new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
+      nationalitySearch: new FormControl(""),
+      nationality: new FormControl(null, [Validators.required]),
+      universitySearch: new FormControl(""),
+      university: new FormControl(null, [Validators.required]),
+      esnSectionSearch: new FormControl(""),
+      esnSection: new FormControl(null, [Validators.required]),
       nrEsnCard: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
       password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(120)]),
     });
@@ -60,43 +63,25 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.autocompleteOnNationality();
+    this.autocompleteOnUniversity();
+    this.autocompleteOnEsnSection();
+  }
+
+  private autocompleteOnNationality() {
     this.typologicalService.findAllNationalities().pipe(
       finalize(() => {
-        this.filteredNationalities = this.form.get('nationality')?.valueChanges.pipe(
+        this.filteredNationalities = this.form.get('nationalitySearch')?.valueChanges.pipe(
           startWith(''),
           map(value => (typeof value === 'string' ? value : value.nationality)),
-          map(nationality => (nationality ? this._filterNationalities(nationality) : this.nationalities.slice())),
+          map(nationality => (nationality ? this._filterNationalities(nationality) : this.nationalities.slice()))
         );
       })
     ).subscribe((nationalities: NationalityModel[]) => this.nationalities = nationalities);
-
-    this.autocompleteOnUniversity();
-
-    this.typologicalService.findAllEsnsections().pipe(
-      finalize(() => {
-        this.filteredEsnSections = this.form.get('esnSection')?.valueChanges.pipe(
-          startWith(''),
-          map(value => (typeof value === 'string' ? value : value.section)),
-          map(section => (section ? this._filterEsnSections(section) : this.esnSections.slice())),
-        );
-      })
-    ).subscribe((esnSections: EsnSectionModel[]) => this.esnSections = esnSections);
-  }
-
-  displayFnNationality(nationality: NationalityModel): string {
-    return nationality && nationality.nationality ? nationality.nationality : '';
-  }
-
-  displayFnUniversity(university: UniversityModel): string {
-    return university && university.university ? university.university : '';
-  }
-
-  displayFnEsnSection(esnSection: EsnSectionModel): string {
-    return esnSection && esnSection.section ? esnSection.section : '';
   }
 
   private autocompleteOnUniversity() {
-    this.form.get('university')?.valueChanges
+    this.form.get('universitySearch')?.valueChanges
       .pipe(
         startWith(''),
         debounceTime(300),
@@ -110,6 +95,18 @@ export class RegisterComponent implements OnInit {
           })
         );
       });
+  }
+
+  private autocompleteOnEsnSection() {
+    this.typologicalService.findAllEsnsections().pipe(
+      finalize(() => {
+        this.filteredEsnSections = this.form.get('esnSectionSearch')?.valueChanges.pipe(
+          startWith(''),
+          map(value => (typeof value === 'string' ? value : value.section)),
+          map(section => (section ? this._filterEsnSections(section) : this.esnSections.slice()))
+        );
+      })
+    ).subscribe((esnSections: EsnSectionModel[]) => this.esnSections = esnSections);
   }
 
   private returnEmptyList(): Observable<Array<any>> {
@@ -126,12 +123,6 @@ export class RegisterComponent implements OnInit {
     );
   }
 
-  private _filterUniversities(university: string): UniversityModel[] {
-    const filterValue = university.toLowerCase();
-
-    return this.universities.filter(university => university.university.toLowerCase().includes(filterValue));
-  }
-
   private _filterEsnSections(section: string): EsnSectionModel[] {
     const filterValue = section.toLowerCase();
 
@@ -139,6 +130,8 @@ export class RegisterComponent implements OnInit {
   }
 
   register(): void {
+    console.log(this.form);
+
     let signupRequest: SignupRequestModel = {
       name: this.form.get("name")?.value,
       surname: this.form.get("surname")?.value,
@@ -152,10 +145,13 @@ export class RegisterComponent implements OnInit {
       password: this.form.get("password")?.value
     };
 
+    console.log(signupRequest);
     this.authService.register(signupRequest).subscribe({
       next: (data) => {
-        this.snackbarService.openSuccessSnackBar("Registered successfully")
-        this.router.navigateByUrl(RoutesEnum.LOGIN);
+        if (data) {
+          this.snackbarService.openSuccessSnackBar("Registered successfully")
+          this.router.navigateByUrl(RoutesEnum.LOGIN);
+        }
       }
     });
   }

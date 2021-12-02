@@ -30,6 +30,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SpinnerSharedService } from './services/spinner-shared/spinner-shared.service';
 import { SpinnerInterceptor } from './interceptors/spinner/spinner.interceptor';
 import { AuthInterceptor } from './interceptors/auth/auth.interceptor';
+import { MatSelectModule } from '@angular/material/select';
+import { ConfirmRegistrationComponent } from './components/confirm-registration/confirm-registration.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { AuthInterceptor } from './interceptors/auth/auth.interceptor';
     BoardUserComponent,
     BoardModeratorComponent,
     SpinnerComponent,
+    ConfirmRegistrationComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,8 @@ import { AuthInterceptor } from './interceptors/auth/auth.interceptor';
     MatDatepickerModule,
     MatNativeDateModule,
     MatAutocompleteModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSelectModule,
   ],
   providers: [SpinnerSharedService,
     { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true },

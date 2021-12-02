@@ -1,44 +1,48 @@
 <div class="row full-height align-items-center justify-content-center">
-    <div class="col-10 align-self-center" [formGroup]="form">
-        <mat-card class="login-card mx-auto">
-            <mat-card-content>
-                <div class="row">
-                    <div class="col">
-                        <mat-form-field appearance="fill" class="full-width">
-                            <mat-label>Email</mat-label>
-                            <input matInput #email formControlName="email">
-                        </mat-form-field>
+    <div class="col-10 align-self-center">
+        <form [formGroup]="form">
+            <mat-card class="login-card mx-auto">
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col">
+                            <mat-form-field appearance="fill" class="full-width">
+                                <mat-label>Email</mat-label>
+                                <input matInput #email formControlName="email" autocomplete="email">
+                            </mat-form-field>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <mat-form-field appearance="fill" class="full-width">
-                            <mat-label>Password</mat-label>
-                            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
-                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                                [attr.aria-pressed]="hide">
-                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                            </button>
-                        </mat-form-field>
+                    <div class=" row">
+                        <div class="col">
+                            <mat-form-field appearance="fill" class="full-width">
+                                <mat-label>Password</mat-label>
+                                <input matInput [type]="hide ? 'password' : 'text'" formControlName="current-password"
+                                    autocomplete="current-password">
+                                <button mat-icon-button matSuffix (click)="hide = !hide"
+                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <button mat-raised-button color="primary" class="full-width" (click)="login()">Login</button>
+                    <div class="row">
+                        <div class="col">
+                            <button mat-raised-button color="primary" class="full-width"
+                                (click)="login()">Login</button>
+                        </div>
                     </div>
-                </div>
-                <div class="row padding-top-10">
-                    <div class="col">
-                        <a>Forgot your password?</a>
+                    <div class="row padding-top-10">
+                        <div class="col">
+                            <a>Forgot your password?</a>
+                        </div>
                     </div>
-                </div>
-                <div class="row padding-top-10">
-                    <div class="col">
-                        <button mat-stroked-button color="primary" class="full-width"
-                            (click)="goToRegistration()">Register</button>
+                    <div class="row padding-top-10">
+                        <div class="col">
+                            <button mat-stroked-button color="primary" class="full-width"
+                                (click)="goToRegistration()">Register</button>
+                        </div>
                     </div>
-                </div>
-            </mat-card-content>
-        </mat-card>
+                </mat-card-content>
+            </mat-card>
+        </form>
     </div>
 </div>

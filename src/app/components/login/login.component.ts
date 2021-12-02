@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder, private router: Router, private _snackBar: MatSnackBar) {
     this.form = fb.group({
       'email': new FormControl('', [Validators.required, Validators.minLength(6)]),
-      'password': new FormControl('', [Validators.required, Validators.minLength(6)]),
+      'current-password': new FormControl('', [Validators.required, Validators.minLength(6)]),
     });
   }
 
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
   login(): void {
     let loginRequest: LoginModel = {
       email: this.form.get("email")?.value,
-      password: this.form.get("password")?.value
+      password: this.form.get("current-password")?.value
     };
     this.authService.login(loginRequest).subscribe({
       next: (data) => {
