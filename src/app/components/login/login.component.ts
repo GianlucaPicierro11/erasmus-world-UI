@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { RoutesEnum } from 'app/enumerations/routes.enum';
 import { LoginModel } from 'app/models/login-request.model';
 import { AuthService } from 'app/services/auth/auth.service';
+import { LoginSharedService } from 'app/services/login-shared/login-shared.service';
 import { TokenStorageService } from 'app/services/token-storage/token-storage.service';
 
 @Component({
@@ -13,17 +14,15 @@ import { TokenStorageService } from 'app/services/token-storage/token-storage.se
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  hide = true;
+  hidePassword = true;
   form: FormGroup;
-
   isLoggedIn = false;
-  isLoginFailed = false;
   roles: string[] = [];
 
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
-    private fb: FormBuilder, private router: Router, private _snackBar: MatSnackBar) {
+    private fb: FormBuilder, private router: Router, private _snackBar: MatSnackBar, private loginSharedService: LoginSharedService) {
     this.form = fb.group({
-      'email': new FormControl('', [Validators.required, Validators.minLength(6)]),
+      'email': new FormControl('', [Validators.required, Validators.email, Validators.minLength(6)]),
       'current-password': new FormControl('', [Validators.required, Validators.minLength(6)]),
     });
   }
@@ -44,16 +43,18 @@ export class LoginComponent implements OnInit {
       next: (data) => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
-
-        this.isLoginFailed = false;
-        this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
       },
       error: (e) => {
         this._snackBar.open(e.error.error, "Close")
-        this.isLoginFailed = true;
+        this.loginSharedService.pushIsLoggedIn(false);
+        this.loginSharedService.pushIsLoggedOut(true);
       },
-      complete: () => this.router.navigateByUrl(RoutesEnum.HOME)
+      complete: () => {
+        this.loginSharedService.pushIsLoggedIn(true);
+        this.loginSharedService.pushIsLoggedOut(false);
+        this.router.navigateByUrl(RoutesEnum.HOME);
+      }
     });
   }
 
