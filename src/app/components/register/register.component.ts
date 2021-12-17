@@ -130,8 +130,6 @@ export class RegisterComponent implements OnInit {
   }
 
   register(): void {
-    console.log(this.form);
-
     let signupRequest: SignupRequestModel = {
       name: this.form.get("name")?.value,
       surname: this.form.get("surname")?.value,
@@ -145,13 +143,18 @@ export class RegisterComponent implements OnInit {
       password: this.form.get("password")?.value
     };
 
-    console.log(signupRequest);
     this.authService.register(signupRequest).subscribe({
       next: (data) => {
         if (data) {
-          this.snackbarService.openSuccessSnackBar("Registered successfully")
+          this.snackbarService.openSuccessSnackBar("Registered successfully, please check your email and confirm your account")
           this.router.navigateByUrl(RoutesEnum.LOGIN);
         }
+      },
+      error: (e) => {
+        this.snackbarService.openErrorSnackBar(e.error.error)
+      },
+      complete: () => {
+        this.router.navigateByUrl(RoutesEnum.LOGIN);
       }
     });
   }
