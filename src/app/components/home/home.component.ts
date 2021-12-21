@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RoutesEnum } from 'app/enumerations/routes.enum';
 import { TokenStorageService } from 'app/services/token-storage/token-storage.service';
-import { UserService } from 'app/services/user/user.service';
 
 @Component({
   selector: 'app-home',

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RoutesEnum } from 'app/enumerations/routes.enum';
 import { AuthService } from 'app/services/auth/auth.service';
+import { SnackbarService } from 'app/services/snackbar/snackbar.service';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-confirm-registration',
@@ -10,14 +13,30 @@ import { AuthService } from 'app/services/auth/auth.service';
 export class ConfirmRegistrationComponent implements OnInit {
   user!: string | null;
   token!: string | null;
+  confirmation: Subject<boolean> = new BehaviorSubject<boolean>(false);
+  confirmation$ = this.confirmation.asObservable();
 
-  constructor(private route: ActivatedRoute, private authService: AuthService) {
+  constructor(private route: ActivatedRoute, private authService: AuthService, private snackbarService: SnackbarService, private router: Router) {
   }
 
   ngOnInit(): void {
     this.user = this.route.snapshot.paramMap.get('user');
     this.token = this.route.snapshot.paramMap.get('token');
-    this.authService.confirm(this.user, this.token).subscribe(result => console.log(result));
+    this.authService.confirm(this.user, this.token).subscribe({
+      next: (confirmation) => {
+        if (confirmation) {
+          this.confirmation.next(confirmation != null || confirmation != undefined);
+          this.snackbarService.openSuccessSnackBar("Registration confirmed")
+          this.router.navigateByUrl(RoutesEnum.LOGIN);
+        }
+      },
+      error: (e) => {
+        this.snackbarService.openErrorSnackBar(e.error.error)
+      },
+      complete: () => {
+        this.router.navigateByUrl(RoutesEnum.LOGIN);
+      }
+    });
   }
 
 }
