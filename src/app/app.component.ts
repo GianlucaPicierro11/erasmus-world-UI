@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
         this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
         this.username = user.username;
       } else {
-        this.goToLogin();
+        //this.goToLogin();
       }
     });
   }
