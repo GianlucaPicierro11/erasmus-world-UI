@@ -11,7 +11,6 @@ import { TokenStorageService } from './services/token-storage/token-storage.serv
 })
 
 export class AppComponent implements OnInit {
-  private roles: string[] = [];
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
@@ -24,10 +23,7 @@ export class AppComponent implements OnInit {
     this.loginSharedService.isLoggedIn$.subscribe(isLoggedIn => {
       if (isLoggedIn) {
         const user = this.tokenStorageService.getUser();
-        this.roles = user.roles;
-        this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-        this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-        this.username = user.username;
+        this.username = user?.username;
       }
     });
   }
@@ -36,6 +32,7 @@ export class AppComponent implements OnInit {
     this.tokenStorageService.signOut();
     this.loginSharedService.pushIsLoggedIn(!!this.tokenStorageService.getToken());
     this.loginSharedService.pushIsLoggedOut(!this.tokenStorageService.getToken());
+    this.router.navigateByUrl(RoutesEnum.LOGIN);
   }
 
   goToLogin() {

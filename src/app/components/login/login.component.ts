@@ -16,7 +16,6 @@ import { TokenStorageService } from 'app/services/token-storage/token-storage.se
 export class LoginComponent implements OnInit {
   hidePassword = true;
   form: FormGroup;
-  roles: string[] = [];
 
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService,
     private fb: FormBuilder, private router: Router, private loginSharedService: LoginSharedService, private snackbarService: SnackbarService) {
@@ -40,9 +39,8 @@ export class LoginComponent implements OnInit {
     };
     this.authService.login(loginRequest).subscribe({
       next: (data) => {
-        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveToken(data.token);
         this.tokenStorage.saveUser(data);
-        this.roles = this.tokenStorage.getUser().roles;
       },
       error: (e) => {
         this.snackbarService.openErrorSnackBar(e.error.error)

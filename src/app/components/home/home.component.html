@@ -1,80 +1,79 @@
 <div class="row full-height align-items-center justify-content-center">
     <div class="col-10 align-self-center text-center">
-        <div class="card" style="width: 500px;">
+        <div class="card width-card">
             <div class="row">
-                <div class="col-4"
-                    style="background-color: #3a99d1; height: 300px;border-top-left-radius: 15px; border-bottom-left-radius: 15px; color: white;text-align: left;">
-                    <h3 style="margin: 0px;">ESNcard</h3>
-                    <p>Member of the erasmus generation</p>
-                    <div style="height: 200px; border-style: dashed;">
-                        <mat-icon style="font-size: 130px;">person</mat-icon>
+                <div class="col-4 left-card font-text-size">
+                    <span class="margin-0 padding-bottom">ESNcard</span>
+                    <p fxShow fxHide.lt-sm="true">Member of the erasmus generation</p>
+                    <div class="img-card">
+                        <mat-icon class="font-icon-person">person</mat-icon>
                         <p style="text-align: center!important;">
                             Upload your photo
                         </p>
                     </div>
                 </div>
-                <div class="col-8" style="font-size:x-small;">
+                <div class="col-8 font-text-size">
                     <div class="row">
-                        <div class="col text-right">
-                            <img style="block-size: 55px;text-align: right!important;"
-                                src="../../../assets/images/ESN_full-logo-Satellite.png" alt="image">
+                        <div class="col text-right padding-0">
+                            <img class="size-box-logo" src="../../../assets/images/ESN_full-logo-Satellite.png"
+                                alt="image">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col text-left" style="padding: 0px;">
+                        <div class="col text-left padding-0">
                             NAME & SURNAME
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col text-left" style="background-color: #ccecff; padding: 0px;">
-                            Gianluca Picierro
+                        <div class="col text-left padding-0 text-background-card">
+                            <span *ngIf="this.user$ |async ; let user">{{user.name +' '+ user.surname}}</span>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-7 text-left" style="padding: 0px;">
+                        <div class="col-7 text-left padding-0">
                             NATIONALITY
                         </div>
-                        <div class="col-5 text-left" style="padding: 0px;">
-                            DATE OF BIRTH
+                        <div class="col-5 text-left padding-0">
+                            BIRTH
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6 text-left" style="background-color: #ccecff; padding: 0px;">
-                            Italian
+                        <div class="col-6 text-left padding-0 text-background-card">
+                            <span *ngIf="this.user$ |async ; let user">{{user.nationality}}</span>
                         </div>
-                        <div class="col-5 offset-1 text-left" style="background-color: #ccecff; padding: 0px;">
-                            03-01-1992
+                        <div class="col-5 offset-1 text-left padding-0 text-background-card">
+                            <span *ngIf="this.user$ |async ; let user">{{user.birthDate | date: 'dd/MM/yyyy'}}</span>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col text-left" style="padding: 0px;">
+                    <div class="row" fxShow fxHide.lt-sm="true">
+                        <div class="col text-left padding-0">
                             STUDENT AT
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col text-left" style="background-color: #ccecff; padding: 0px;">
-                            University of Bologna
+                    <div class="row" fxShow fxHide.lt-sm="true">
+                        <div class="col text-left padding-0 text-background-card">
+                            <span *ngIf="this.user$ |async ; let user">{{user.university}}</span>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col text-left" style="padding: 0px;">
+                        <div class="col text-left padding-0">
                             ESN SECTION
                         </div>
-                        <div class="col-5 text-left" style="padding: 0px;">
-                            VALID 12 MONTHS SINCE
+                        <div class="col-5 text-left padding-0">
+                            EXPIRY
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-6 text-left" style="background-color: #ccecff; padding: 0px;">
-                            ESN bari
+                        <div class="col-6 text-left padding-0 text-background-card">
+                            <span *ngIf="this.user$ |async ; let user">{{user.esnSection}}</span>
                         </div>
-                        <div class="col-5 offset-1 text-left" style="background-color: #ccecff; padding: 0px;">
-                            03-01-1992
+                        <div class="col-5 offset-1 text-left padding-0 text-background-card">
+                            <span *ngIf="this.user$ |async ; let user">{{user.expiryDate | date: 'dd/MM/yyyy'}}</span>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col text-left" style="padding: 0px;">
-                            ESNCARD N° 243654765876987GFH
+                        <div class="col text-left padding-0">
+                            ESNCARD N° <span *ngIf="this.user$ |async ; let user">{{user.esnCard}}</span>
                         </div>
                     </div>
                 </div>

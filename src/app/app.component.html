@@ -10,7 +10,7 @@
                 <button mat-menu-item>Test2</button>
             </mat-menu>
             <span fxShow fxHide.lt-sm="true">Erasmus World App</span>
-            <span fxHide fxShow.lt-sm="true">Erasmus World App</span>
+            <span fxHide fxShow.lt-sm="true">EWA</span>
             <span class="toolbar-spacer"></span>
             <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"
                 [matMenuTriggerFor]="loginMenu" fxHide fxShow.lt-sm="true">
@@ -24,12 +24,16 @@
                         *ngIf="this.loginSharedService.isLoggedOut$ | async">Register</button>
                     <button mat-menu-item (click)="logout()"
                         *ngIf="this.loginSharedService.isLoggedIn$ | async">Logout</button>
+                    <p>{{this.username}}</p>
                 </div>
             </mat-menu>
             <div *ngIf="this.loginSharedService.isLoggedOut$ | async">
                 <button mat-button fxShow="true" fxShow fxHide.lt-sm="true" (click)="goToLogin()">Login</button>
                 <button mat-raised-button fxShow="true" fxShow fxHide.lt-sm="true"
                     (click)="goToRegistration()">Register</button>
+            </div>
+            <div fxShow="true" fxShow fxHide.lt-sm="true" *ngIf="this.loginSharedService.isLoggedIn$ | async">
+                <span>{{this.username}}</span>
             </div>
             <div *ngIf="this.loginSharedService.isLoggedIn$ | async">
                 <button mat-button fxShow="true" fxShow fxHide.lt-sm="true" (click)="logout()">Logout</button>
