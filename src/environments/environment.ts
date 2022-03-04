@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   API_URL_TEST: 'http://localhost:8080/test/',
   AUTH_API: 'http://localhost:8080/auth/',
-  BASE_URL_API: 'http://localhost:8080/'
+  BASE_URL_API: 'http://localhost:8080/',
+  BASE_URL_UI: 'http://localhost:4200/'
 };
 
 /*

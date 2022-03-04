@@ -1,6 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatMenu } from '@angular/material/menu';
 import { Router } from '@angular/router';
+import { environment } from '@env/environment';
+import { LanguageFlagPathEnum } from './enumerations/language-flag-path.enum';
+import { LanguageLocaleIdEnum } from './enumerations/language-locale-id.enum';
 import { RoutesEnum } from './enumerations/routes.enum';
+import { LanguageModel } from './models/language.model';
+import { LocaleLanguageService } from './services/locale-language/locale-language.service';
 import { LoginSharedService } from './services/login-shared/login-shared.service';
 import { TokenStorageService } from './services/token-storage/token-storage.service';
 
@@ -11,11 +17,27 @@ import { TokenStorageService } from './services/token-storage/token-storage.serv
 })
 
 export class AppComponent implements OnInit {
+
+  @ViewChild('flags', { static: false })
+  flagsSelect!: MatMenu;
+
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
+  languageSelected: LanguageModel = { localeId: LanguageLocaleIdEnum.ENGLISH, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ENGLISH) };
+  languages: Array<LanguageModel> = [
+    { localeId: LanguageLocaleIdEnum.ENGLISH, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ENGLISH) },
+    { localeId: LanguageLocaleIdEnum.ITALIAN, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ITALIAN) }
+  ];
 
-  constructor(private tokenStorageService: TokenStorageService, private router: Router, public loginSharedService: LoginSharedService) { }
+
+  constructor(private tokenStorageService: TokenStorageService, private router: Router,
+    public loginSharedService: LoginSharedService, private localeLanguageService: LocaleLanguageService) {
+  }
+
+  private getLanguagePath(languageFlagPathEnum: LanguageFlagPathEnum): string {
+    return environment.BASE_URL_UI + languageFlagPathEnum;
+  }
 
   ngOnInit(): void {
     this.loginSharedService.pushIsLoggedIn(!!this.tokenStorageService.getToken());
@@ -41,6 +63,11 @@ export class AppComponent implements OnInit {
 
   goToRegistration() {
     this.router.navigateByUrl(RoutesEnum.REGISTER);
+  }
+
+  onSelect(languageFlagPath: LanguageModel) {
+    this.languageSelected = languageFlagPath;
+    this.localeLanguageService.setLanguage(languageFlagPath.localeId);
   }
 }
 

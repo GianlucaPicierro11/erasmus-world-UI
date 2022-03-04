@@ -1,5 +1,5 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -32,6 +32,7 @@ import { SpinnerInterceptor } from './interceptors/spinner/spinner.interceptor';
 import { AuthInterceptor } from './interceptors/auth/auth.interceptor';
 import { MatSelectModule } from '@angular/material/select';
 import { ConfirmRegistrationComponent } from './components/confirm-registration/confirm-registration.component';
+import { LocaleLanguageService } from './services/locale-language/locale-language.service';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,20 @@ import { ConfirmRegistrationComponent } from './components/confirm-registration/
   providers: [SpinnerSharedService,
     { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
+    {
+      provide: MAT_DATE_LOCALE,
+      useFactory: (localeService: LocaleLanguageService) => {
+        return localeService.getLanguage();
+      },
+      deps: [LocaleLanguageService]
+    },
+    {
+      provide: LOCALE_ID,
+      useFactory: (localeService: LocaleLanguageService) => {
+        return localeService.getLanguage();
+      },
+      deps: [LocaleLanguageService]
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
