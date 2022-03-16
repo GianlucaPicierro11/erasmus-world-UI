@@ -24,17 +24,19 @@
             </button>
             <mat-menu #loginMenu="matMenu">
                 <div>
-                    <button mat-menu-item (click)="goToLogin()"
-                        *ngIf="this.loginSharedService.isLoggedOut$ | async">Login</button>
+                    <button mat-menu-item (click)="goToLogin()" *ngIf="this.loginSharedService.isLoggedOut$ | async"
+                        i18n="Login|login button@@login">Login</button>
                     <button mat-menu-item (click)="goToRegistration()"
-                        *ngIf="this.loginSharedService.isLoggedOut$ | async">Register</button>
-                    <button mat-menu-item (click)="logout()"
-                        *ngIf="this.loginSharedService.isLoggedIn$ | async">Logout</button>
+                        *ngIf="this.loginSharedService.isLoggedOut$ | async"
+                        i18n="Register|register button@@register">Register</button>
+                    <button mat-menu-item (click)="logout()" *ngIf="this.loginSharedService.isLoggedIn$ | async"
+                        i18n="Logout|logout button@@logout">Logout</button>
                     <p>{{this.username}}</p>
                 </div>
             </mat-menu>
             <div *ngIf="this.loginSharedService.isLoggedOut$ | async">
-                <button mat-button fxShow="true" fxShow fxHide.lt-sm="true" (click)="goToLogin()">Login</button>
+                <button mat-button fxShow="true" fxShow fxHide.lt-sm="true" (click)="goToLogin()"
+                    i18n="Login|login button@@login">Login</button>
                 <button mat-raised-button fxShow="true" fxShow fxHide.lt-sm="true"
                     (click)="goToRegistration()">Register</button>
             </div>
@@ -42,7 +44,8 @@
                 <span>{{this.username}}</span>
             </div>
             <div *ngIf="this.loginSharedService.isLoggedIn$ | async">
-                <button mat-button fxShow="true" fxShow fxHide.lt-sm="true" (click)="logout()">Logout</button>
+                <button mat-button fxShow="true" fxShow fxHide.lt-sm="true" (click)="logout()"
+                    i18n="Logout|logout button@@logout">Logout</button>
             </div>
         </mat-toolbar-row>
     </mat-toolbar>

@@ -6,16 +6,19 @@ import { LanguageLocaleIdEnum } from 'app/enumerations/language-locale-id.enum';
 })
 export class LocaleLanguageService {
 
-  private language: string = navigator.language != LanguageLocaleIdEnum.ITALIAN ? LanguageLocaleIdEnum.ENGLISH : LanguageLocaleIdEnum.ITALIAN;
+  private language: string = navigator.language != LanguageLocaleIdEnum.ITALIAN && navigator.language != 'it-IT' ? LanguageLocaleIdEnum.ENGLISH : LanguageLocaleIdEnum.ITALIAN;
 
   constructor() { }
 
   getLanguage(): string {
+    console.log(navigator.language)
+    console.log(this.language)
     return this.language;
   }
 
   setLanguage(language: string) {
     this.language = language;
+    console.log(this.language)
   }
 
 }

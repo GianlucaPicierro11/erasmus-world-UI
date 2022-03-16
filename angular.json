@@ -13,10 +13,20 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "it": {
+            "translation": "src/locale/messages.it.xlf",
+            "baseHref": "it"
+          }
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "localize": true,
             "outputPath": "dist/erasmus-world-ui",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -61,6 +71,11 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "it": {
+              "localize": [
+                "it"
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -73,6 +88,9 @@
             },
             "development": {
               "browserTarget": "erasmus-world-ui:build:development"
+            },
+            "it": {
+              "browserTarget": "erasmus-world-ui:build:development,it"
             }
           },
           "defaultConfiguration": "development"

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, LOCALE_ID, OnInit, ViewChild } from '@angular/core';
 import { MatMenu } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { environment } from '@env/environment';
@@ -24,7 +24,10 @@ export class AppComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
-  languageSelected: LanguageModel = { localeId: LanguageLocaleIdEnum.ENGLISH, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ENGLISH) };
+  languageSelected: LanguageModel = LOCALE_ID.toString()
+    == LanguageLocaleIdEnum.ENGLISH ?
+    { localeId: LanguageLocaleIdEnum.ENGLISH, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ENGLISH) } :
+    { localeId: LanguageLocaleIdEnum.ITALIAN, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ITALIAN) };
   languages: Array<LanguageModel> = [
     { localeId: LanguageLocaleIdEnum.ENGLISH, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ENGLISH) },
     { localeId: LanguageLocaleIdEnum.ITALIAN, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ITALIAN) }
