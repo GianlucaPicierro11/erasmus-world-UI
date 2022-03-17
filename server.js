@@ -10,7 +10,7 @@ app.get('/:ln/*', function (req, res) {
 });
 app.listen(process.env.PORT || 8080);
 
-export function appLang(language) { //add language here
+function appLang(language) { //add language here
     const distFolder = join(process.cwd(), 'dist/erasmus-world-ui/', language); //Use language here
     app.use(express.static(distFolder));
 }
