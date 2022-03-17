@@ -3,9 +3,9 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-app.use(express.static(__dirname + '/dist/erasmus-world-ui/' + req.params.ln));
 app.get('/:ln/*', function (req, res) {
     res.sendFile(path.join(__dirname +
         '/dist/erasmus-world-ui/' + req.params.ln + '/index.html'));
+    app.use(express.static(__dirname + '/dist/erasmus-world-ui/' + req.params.ln));
 });
 app.listen(process.env.PORT || 8080);
