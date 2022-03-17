@@ -19,10 +19,6 @@
           "it": {
             "translation": "src/locale/messages.it.xlf",
             "baseHref": "it"
-          },
-          "en": {
-            "translation": "src/locale/messages.xlf",
-            "baseHref": "en"
           }
         }
       },
@@ -80,11 +76,6 @@
               "localize": [
                 "it"
               ]
-            },
-            "en": {
-              "localize": [
-                "en"
-              ]
             }
           },
           "defaultConfiguration": "production"
@@ -97,9 +88,6 @@
             },
             "development": {
               "browserTarget": "erasmus-world-ui:build:development"
-            },
-            "it-en": {
-              "browserTarget": "erasmus-world-ui:build:development,it,en"
             }
           },
           "defaultConfiguration": "development"
