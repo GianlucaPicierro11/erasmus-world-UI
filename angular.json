@@ -14,11 +14,11 @@
       "sourceRoot": "src",
       "prefix": "app",
       "i18n": {
-        "sourceLocale": "en-US",
+        "sourceLocale": "en",
         "locales": {
           "it": {
             "translation": "src/locale/messages.it.xlf",
-            "baseHref": "it"
+            "baseHref": ""
           }
         }
       },
