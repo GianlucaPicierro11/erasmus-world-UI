@@ -4,7 +4,13 @@ const express = require('express');
 const path = require('path');
 const app = express();
 app.get('/:ln/*', function (req, res) {
+    appLang(req.params.ln)
     res.sendFile(path.join(__dirname +
         '/dist/erasmus-world-ui/' + req.params.ln + '/index.html'));
 });
 app.listen(process.env.PORT || 8080);
+
+export function appLang(language) { //add language here
+    const distFolder = join(process.cwd(), 'dist/erasmus-world-ui/', language); //Use language here
+    app.use(express.static(distFolder));
+}
