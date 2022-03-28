@@ -33,6 +33,7 @@ export class AppComponent implements OnInit {
 
   constructor(private tokenStorageService: TokenStorageService, private router: Router,
     public loginSharedService: LoginSharedService, private localeLanguageService: LocaleLanguageService) {
+    console.log("language: ", localeLanguageService.getLanguage())
     this.languageSelected = localeLanguageService.getLanguage()
       == LanguageLocaleIdEnum.ITALIAN ?
       { localeId: LanguageLocaleIdEnum.ITALIAN, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ITALIAN) } :
@@ -40,6 +41,7 @@ export class AppComponent implements OnInit {
     if (localeLanguageService.getLanguage() == LanguageLocaleIdEnum.ITALIAN) {
       window.location.assign(environment.BASE_URL_UI.replace(LanguageLocaleIdEnum.ENGLISH, localeLanguageService.getLanguage()))
     }
+    console.log("languageSelected", this.languageSelected);
   }
 
   private getLanguagePath(languageFlagPathEnum: LanguageFlagPathEnum): string {
