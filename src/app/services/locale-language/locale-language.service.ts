@@ -11,14 +11,11 @@ export class LocaleLanguageService {
   constructor() { }
 
   getLanguage(): string {
-    console.log(navigator.language)
-    console.log(this.language)
     return this.language;
   }
 
   setLanguage(language: string) {
     this.language = language;
-    console.log(this.language)
   }
 
 }

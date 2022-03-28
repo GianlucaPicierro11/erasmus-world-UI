@@ -24,10 +24,7 @@ export class AppComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
-  languageSelected: LanguageModel = LOCALE_ID.toString()
-    == LanguageLocaleIdEnum.ENGLISH ?
-    { localeId: LanguageLocaleIdEnum.ENGLISH, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ENGLISH) } :
-    { localeId: LanguageLocaleIdEnum.ITALIAN, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ITALIAN) };
+  languageSelected: LanguageModel;
   languages: Array<LanguageModel> = [
     { localeId: LanguageLocaleIdEnum.ENGLISH, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ENGLISH) },
     { localeId: LanguageLocaleIdEnum.ITALIAN, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ITALIAN) }
@@ -36,6 +33,12 @@ export class AppComponent implements OnInit {
 
   constructor(private tokenStorageService: TokenStorageService, private router: Router,
     public loginSharedService: LoginSharedService, private localeLanguageService: LocaleLanguageService) {
+    this.languageSelected = localeLanguageService.getLanguage()
+      == LanguageLocaleIdEnum.ENGLISH ?
+      { localeId: LanguageLocaleIdEnum.ENGLISH, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ENGLISH) } :
+      { localeId: LanguageLocaleIdEnum.ITALIAN, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ITALIAN) };
+    console.log(this.router.url);
+    this.router.navigateByUrl(this.router.url.replace(LanguageLocaleIdEnum.ENGLISH || LanguageLocaleIdEnum.ITALIAN, localeLanguageService.getLanguage()));
   }
 
   private getLanguagePath(languageFlagPathEnum: LanguageFlagPathEnum): string {
@@ -69,8 +72,11 @@ export class AppComponent implements OnInit {
   }
 
   onSelect(languageFlagPath: LanguageModel) {
+    let previusLanguageSelected = this.languageSelected;
     this.languageSelected = languageFlagPath;
     this.localeLanguageService.setLanguage(languageFlagPath.localeId);
+    this.router.navigateByUrl(this.router.url.replace(previusLanguageSelected.localeId, languageFlagPath.localeId));
+
   }
 }
 
