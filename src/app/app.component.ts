@@ -33,6 +33,8 @@ export class AppComponent implements OnInit {
 
   constructor(private tokenStorageService: TokenStorageService, private router: Router,
     public loginSharedService: LoginSharedService, private localeLanguageService: LocaleLanguageService) {
+    console.log(window.location);
+    console.log(window.location.href);
   }
 
   private getLanguagePath(languageFlagPathEnum: LanguageFlagPathEnum): string {
