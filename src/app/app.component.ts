@@ -69,6 +69,9 @@ export class AppComponent implements OnInit {
     let previusLanguageSelected = this.languageSelected;
     this.languageSelected = languageFlagPath;
     this.localeLanguageService.setLanguage(languageFlagPath.localeId);
+    console.log(window.location);
+    console.log(window.location.href);
+
     window.location.assign(environment.BASE_URL_UI.replace(previusLanguageSelected.localeId, languageFlagPath.localeId));
   }
 }
