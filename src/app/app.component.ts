@@ -37,7 +37,9 @@ export class AppComponent implements OnInit {
       == LanguageLocaleIdEnum.ITALIAN ?
       { localeId: LanguageLocaleIdEnum.ITALIAN, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ITALIAN) } :
       { localeId: LanguageLocaleIdEnum.ENGLISH, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ENGLISH) };
-    window.location.assign(environment.BASE_URL_UI.replace(LanguageLocaleIdEnum.ENGLISH || LanguageLocaleIdEnum.ITALIAN, localeLanguageService.getLanguage()));
+    if (localeLanguageService.getLanguage() == LanguageLocaleIdEnum.ITALIAN) {
+      window.location.assign(environment.BASE_URL_UI.replace(LanguageLocaleIdEnum.ENGLISH, localeLanguageService.getLanguage()))
+    }
   }
 
   private getLanguagePath(languageFlagPathEnum: LanguageFlagPathEnum): string {
