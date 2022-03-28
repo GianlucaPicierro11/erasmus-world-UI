@@ -17,11 +17,14 @@ app.use(locale(supportedLocales));
 app.listen(port);
 // Return index.html for all GET requests for PathLocationStrategy
 // And accept locale style URLs: /en/example
-app.get('/*/*', (req, res) => {
-    const matches = req.url.match(/^\/([a-z]{2}(?:-[A-Z]{2})?)\//);
-    console.log(`matches ${matches}`);
-    const locale = matches && supportedLocales.indexOf(matches[1]) !== -1 ? matches[1] : req.locale;
-    console.log(`locale ${locale}`);
-    res.sendFile(path.join(`${__dirname}/../dist/erasmus-world-ui/${locale}/index.html`));
+app.get('/en/*', (req, res) => {
+    // const matches = req.url.match(/^\/([a-z]{2}(?:-[A-Z]{2})?)\//);
+    // console.log(`matches ${matches}`);
+    // const locale = matches && supportedLocales.indexOf(matches[1]) !== -1 ? matches[1] : req.locale;
+    // console.log(`locale ${locale}`);
+    res.sendFile(path.join(`${__dirname}/../dist/erasmus-world-ui/en/index.html`));
+});
+app.get('/it/*', (req, res) => {
+    res.sendFile(path.join(`${__dirname}/../dist/erasmus-world-ui/it/index.html`));
 });
 console.log(`Server listening on ${port}`);
