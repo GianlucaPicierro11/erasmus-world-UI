@@ -13,7 +13,7 @@
   "private": true,
   "engines": {
     "node": "16.13.0",
-    "npm": "8.1.0"
+    "npm": "8.3.0"
   },
   "dependencies": {
     "@angular/animations": "~13.0.0",
@@ -29,6 +29,7 @@
     "@angular/router": "~13.0.0",
     "compression": "^1.7.4",
     "express": "^4.17.1",
+    "locale": "^0.1.0",
     "moment": "^2.29.1",
     "path": "^0.12.7",
     "rxjs": "~7.4.0",
@@ -36,7 +37,7 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~13.0.1",
+    "@angular-devkit/build-angular": "^13.3.0",
     "@angular/cli": "~13.0.1",
     "@angular/compiler-cli": "~13.0.0",
     "@angular/localize": "^13.0.2",
