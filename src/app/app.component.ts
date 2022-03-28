@@ -37,8 +37,8 @@ export class AppComponent implements OnInit {
       == LanguageLocaleIdEnum.ENGLISH ?
       { localeId: LanguageLocaleIdEnum.ENGLISH, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ENGLISH) } :
       { localeId: LanguageLocaleIdEnum.ITALIAN, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ITALIAN) };
-    console.log(this.router.url);
-    this.router.navigateByUrl(this.router.url.replace(LanguageLocaleIdEnum.ENGLISH || LanguageLocaleIdEnum.ITALIAN, localeLanguageService.getLanguage()));
+    window.location.assign(environment.BASE_URL_UI.replace(LanguageLocaleIdEnum.ENGLISH || LanguageLocaleIdEnum.ITALIAN, localeLanguageService.getLanguage()));
+
   }
 
   private getLanguagePath(languageFlagPathEnum: LanguageFlagPathEnum): string {
@@ -75,8 +75,7 @@ export class AppComponent implements OnInit {
     let previusLanguageSelected = this.languageSelected;
     this.languageSelected = languageFlagPath;
     this.localeLanguageService.setLanguage(languageFlagPath.localeId);
-    this.router.navigateByUrl(this.router.url.replace(previusLanguageSelected.localeId, languageFlagPath.localeId));
-
+    window.location.assign(environment.BASE_URL_UI.replace(previusLanguageSelected.localeId, languageFlagPath.localeId));
   }
 }
 
