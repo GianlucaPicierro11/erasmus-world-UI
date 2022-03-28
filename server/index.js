@@ -4,7 +4,7 @@ const compression = require('compression');
 const path = require('path');
 const express = require('express');
 const locale = require('locale');
-const supportedLocales = ['en', 'en-US', 'it'];
+const supportedLocales = ['en', 'it'];
 const app = express();
 const port = process.env.PORT || 8080;
 // Gzip
