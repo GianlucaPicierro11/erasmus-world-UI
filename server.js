@@ -11,7 +11,7 @@
 // app.listen(process.env.PORT || 8080);
 
 //https://medium.com/@intellix/production-ready-angular-cli-v1-0-0-with-i18n-and-localised-urls-1f3cf16cc204
-const compression = require('compression');
+//const compression = require('compression');
 const path = require('path');
 const express = require('express');
 const locale = require('locale');
@@ -19,7 +19,7 @@ const supportedLocales = ['en', 'it'];
 const app = express();
 const port = process.env.PORT || 8080;
 // Gzip
-app.use(compression());
+//app.use(compression());
 // Serve static files from the dist directory
 app.use(express.static(`${__dirname}/../dist`));
 // Detect locale and determine best match
