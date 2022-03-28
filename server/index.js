@@ -29,4 +29,12 @@ app.get('/it/*', (req, res) => {
     console.log(`it`);
     res.sendFile(path.join(`${__dirname}/../dist/erasmus-world-ui/it/index.html`));
 });
+app.get('/*', (req, res) => {
+    // const matches = req.url.match(/^\/([a-z]{2}(?:-[A-Z]{2})?)\//);
+    // console.log(`matches ${matches}`);
+    // const locale = matches && supportedLocales.indexOf(matches[1]) !== -1 ? matches[1] : req.locale;
+    // console.log(`locale ${locale}`);
+    console.log(`en`);
+    res.sendFile(path.join(`${__dirname}/../dist/erasmus-world-ui/en/index.html`));
+});
 console.log(`Server listening on ${port}`);
