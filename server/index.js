@@ -22,9 +22,11 @@ app.get('/en/*', (req, res) => {
     // console.log(`matches ${matches}`);
     // const locale = matches && supportedLocales.indexOf(matches[1]) !== -1 ? matches[1] : req.locale;
     // console.log(`locale ${locale}`);
+    console.log(`en`);
     res.sendFile(path.join(`${__dirname}/../dist/erasmus-world-ui/en/index.html`));
 });
 app.get('/it/*', (req, res) => {
+    console.log(`it`);
     res.sendFile(path.join(`${__dirname}/../dist/erasmus-world-ui/it/index.html`));
 });
 console.log(`Server listening on ${port}`);
