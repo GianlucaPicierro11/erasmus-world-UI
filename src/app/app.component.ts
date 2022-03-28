@@ -1,4 +1,4 @@
-import { Component, LOCALE_ID, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatMenu } from '@angular/material/menu';
 import { Router } from '@angular/router';
 import { environment } from '@env/environment';
@@ -34,11 +34,10 @@ export class AppComponent implements OnInit {
   constructor(private tokenStorageService: TokenStorageService, private router: Router,
     public loginSharedService: LoginSharedService, private localeLanguageService: LocaleLanguageService) {
     this.languageSelected = localeLanguageService.getLanguage()
-      == LanguageLocaleIdEnum.ENGLISH ?
-      { localeId: LanguageLocaleIdEnum.ENGLISH, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ENGLISH) } :
-      { localeId: LanguageLocaleIdEnum.ITALIAN, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ITALIAN) };
+      == LanguageLocaleIdEnum.ITALIAN ?
+      { localeId: LanguageLocaleIdEnum.ITALIAN, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ITALIAN) } :
+      { localeId: LanguageLocaleIdEnum.ENGLISH, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ENGLISH) };
     window.location.assign(environment.BASE_URL_UI.replace(LanguageLocaleIdEnum.ENGLISH || LanguageLocaleIdEnum.ITALIAN, localeLanguageService.getLanguage()));
-
   }
 
   private getLanguagePath(languageFlagPathEnum: LanguageFlagPathEnum): string {
