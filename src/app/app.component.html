@@ -37,8 +37,8 @@
             <div *ngIf="this.loginSharedService.isLoggedOut$ | async">
                 <button mat-button fxShow="true" fxShow fxHide.lt-sm="true" (click)="goToLogin()"
                     i18n="Login|login button@@login">Login</button>
-                <button mat-raised-button fxShow="true" fxShow fxHide.lt-sm="true"
-                    (click)="goToRegistration()">Register</button>
+                <button mat-raised-button fxShow="true" fxShow fxHide.lt-sm="true" (click)="goToRegistration()"
+                    i18n="Register|register button@@register">Register</button>
             </div>
             <div fxShow="true" fxShow fxHide.lt-sm="true" *ngIf="this.loginSharedService.isLoggedIn$ | async">
                 <span>{{this.username}}</span>
