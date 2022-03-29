@@ -1,0 +1,86 @@
+<div class="row full-height align-items-center justify-content-center">
+    <div class="col-10 align-self-center text-center">
+        <div class="card width-card">
+            <div class="row">
+                <div class="col-4 left-card font-text-size">
+                    <span class="margin-0 padding-bottom" i18n="ESNcard|ESNcard@@esnCard">ESNcard</span>
+                    <p fxShow fxHide.lt-sm="true"
+                        i18n="Member of the erasmus generation|Member of the erasmus generation@@memberErasmusGeneration">
+                        Member of the erasmus generation</p>
+                    <div class="img-card">
+                        <mat-icon class="font-icon-person">person</mat-icon>
+                        <p style="text-align: center!important;"
+                            i18n="Upload your photo|Upload your photo@@uploadYourPhoto">
+                            Upload your photo
+                        </p>
+                    </div>
+                </div>
+                <div class="col-8 font-text-size">
+                    <div class="row">
+                        <div class="col text-right padding-0">
+                            <img class="size-box-logo" src="../../../assets/images/ESN_full-logo-Satellite.png"
+                                alt="image">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-left padding-0" i18n="NAME & SURNAME|NAME & SURNAME@@name&SurnameUC">
+                            NAME & SURNAME
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-left padding-0 text-background-card">
+                            <span *ngIf="this.user$ |async ; let user">{{user.name +' '+ user.surname}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7 text-left padding-0" i18n="NATIONALITY|NATIONALITY@@nationalityUC">
+                            NATIONALITY
+                        </div>
+                        <div class="col-5 text-left padding-0" i18n="BIRTH|BIRTH@@birthUC">
+                            BIRTH
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 text-left padding-0 text-background-card">
+                            <span *ngIf="this.user$ |async ; let user">{{user.nationality}}</span>
+                        </div>
+                        <div class="col-5 offset-1 text-left padding-0 text-background-card">
+                            <span *ngIf="this.user$ |async ; let user">{{user.birthDate | date: 'dd/MM/yyyy'}}</span>
+                        </div>
+                    </div>
+                    <div class="row" fxShow fxHide.lt-sm="true">
+                        <div class="col text-left padding-0" i18n="STUDENT AT|STUDENT AT@@studentAtUC">
+                            STUDENT AT
+                        </div>
+                    </div>
+                    <div class="row" fxShow fxHide.lt-sm="true">
+                        <div class="col text-left padding-0 text-background-card">
+                            <span *ngIf="this.user$ |async ; let user">{{user.university}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-left padding-0" i18n="ESN SECTION|ESN SECTION@@esnSectionUC">
+                            ESN SECTION
+                        </div>
+                        <div class="col-5 text-left padding-0" i18n="EXPIRY|EXPIRY@@expiryUC">
+                            EXPIRY
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 text-left padding-0 text-background-card">
+                            <span *ngIf="this.user$ |async ; let user">{{user.esnSection}}</span>
+                        </div>
+                        <div class="col-5 offset-1 text-left padding-0 text-background-card">
+                            <span *ngIf="this.user$ |async ; let user">{{user.expiryDate | date: 'dd/MM/yyyy'}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-left padding-0" i18n="ESNCARD N°|ESNCARD N°@@esnCardNUC">
+                            ESNCARD N° <span *ngIf="this.user$ |async ; let user">{{user.esnCard}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

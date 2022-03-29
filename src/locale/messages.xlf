@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
       <trans-unit id="login" datatype="html">
         <source>Login</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="sourcefile">src/app/app-component/app.component.html</context>
           <context context-type="linenumber">28,29</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="sourcefile">src/app/app-component/app.component.html</context>
           <context context-type="linenumber">39,40</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/login/login.component.html</context>
+          <context context-type="linenumber">30</context>
         </context-group>
         <note priority="1" from="description">login button</note>
         <note priority="1" from="meaning">Login</note>
@@ -18,8 +22,16 @@
       <trans-unit id="register" datatype="html">
         <source>Register</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="sourcefile">src/app/app-component/app.component.html</context>
           <context context-type="linenumber">31,32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-component/app.component.html</context>
+          <context context-type="linenumber">41,43</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/login/login.component.html</context>
+          <context context-type="linenumber">42</context>
         </context-group>
         <note priority="1" from="description">register button</note>
         <note priority="1" from="meaning">Register</note>
@@ -27,15 +39,305 @@
       <trans-unit id="logout" datatype="html">
         <source>Logout</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="sourcefile">src/app/app-component/app.component.html</context>
           <context context-type="linenumber">33,34</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/app.component.html</context>
+          <context context-type="sourcefile">src/app/app-component/app.component.html</context>
           <context context-type="linenumber">48,50</context>
         </context-group>
         <note priority="1" from="description">logout button</note>
         <note priority="1" from="meaning">Logout</note>
+      </trans-unit>
+      <trans-unit id="confirmRegistration" datatype="html">
+        <source>Confirm registration</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/confirm-registration/confirm-registration.component.html</context>
+          <context context-type="linenumber">5,7</context>
+        </context-group>
+        <note priority="1" from="description">confirm registration</note>
+        <note priority="1" from="meaning">Confirm registration</note>
+      </trans-unit>
+      <trans-unit id="registrationConfirmed" datatype="html">
+        <source> Registration confirmed </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/confirm-registration/confirm-registration.component.html</context>
+          <context context-type="linenumber">8,10</context>
+        </context-group>
+        <note priority="1" from="description">registration confirmed</note>
+        <note priority="1" from="meaning">Registration confirmed</note>
+      </trans-unit>
+      <trans-unit id="confirmationTokenExpired" datatype="html">
+        <source> Maybe your confirmation token is expired or you already use it </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/confirm-registration/confirm-registration.component.html</context>
+          <context context-type="linenumber">12,17</context>
+        </context-group>
+        <note priority="1" from="description"> Maybe your confirmation token is expired or you already use it</note>
+        <note priority="1" from="meaning">Maybe your confirmation token is expired or you already use it</note>
+      </trans-unit>
+      <trans-unit id="esnCard" datatype="html">
+        <source>ESNcard</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/home/home.component.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+        <note priority="1" from="description">ESNcard</note>
+        <note priority="1" from="meaning">ESNcard</note>
+      </trans-unit>
+      <trans-unit id="memberErasmusGeneration" datatype="html">
+        <source> Member of the erasmus generation</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/home/home.component.html</context>
+          <context context-type="linenumber">9,11</context>
+        </context-group>
+        <note priority="1" from="description">Member of the erasmus generation</note>
+        <note priority="1" from="meaning">Member of the erasmus generation</note>
+      </trans-unit>
+      <trans-unit id="uploadYourPhoto" datatype="html">
+        <source> Upload your photo </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/home/home.component.html</context>
+          <context context-type="linenumber">14,16</context>
+        </context-group>
+        <note priority="1" from="description">Upload your photo</note>
+        <note priority="1" from="meaning">Upload your photo</note>
+      </trans-unit>
+      <trans-unit id="name&amp;SurnameUC" datatype="html">
+        <source> NAME &amp; SURNAME </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/home/home.component.html</context>
+          <context context-type="linenumber">27,28</context>
+        </context-group>
+        <note priority="1" from="description">NAME &amp; SURNAME</note>
+        <note priority="1" from="meaning">NAME &amp; SURNAME</note>
+      </trans-unit>
+      <trans-unit id="nationalityUC" datatype="html">
+        <source> NATIONALITY </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/home/home.component.html</context>
+          <context context-type="linenumber">37,38</context>
+        </context-group>
+        <note priority="1" from="description">NATIONALITY</note>
+        <note priority="1" from="meaning">NATIONALITY</note>
+      </trans-unit>
+      <trans-unit id="birthUC" datatype="html">
+        <source> BIRTH </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/home/home.component.html</context>
+          <context context-type="linenumber">40,41</context>
+        </context-group>
+        <note priority="1" from="description">BIRTH</note>
+        <note priority="1" from="meaning">BIRTH</note>
+      </trans-unit>
+      <trans-unit id="studentAtUC" datatype="html">
+        <source> STUDENT AT </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/home/home.component.html</context>
+          <context context-type="linenumber">53,54</context>
+        </context-group>
+        <note priority="1" from="description">STUDENT AT</note>
+        <note priority="1" from="meaning">STUDENT AT</note>
+      </trans-unit>
+      <trans-unit id="esnSectionUC" datatype="html">
+        <source> ESN SECTION </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/home/home.component.html</context>
+          <context context-type="linenumber">63,64</context>
+        </context-group>
+        <note priority="1" from="description">ESN SECTION</note>
+        <note priority="1" from="meaning">ESN SECTION</note>
+      </trans-unit>
+      <trans-unit id="expiryUC" datatype="html">
+        <source> EXPIRY </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/home/home.component.html</context>
+          <context context-type="linenumber">66,67</context>
+        </context-group>
+        <note priority="1" from="description">EXPIRY</note>
+        <note priority="1" from="meaning">EXPIRY</note>
+      </trans-unit>
+      <trans-unit id="esnCardNUC" datatype="html">
+        <source> ESNCARD N° <x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span *ngIf=&quot;this.user$ |async ; let user&quot;&gt;"/><x id="INTERPOLATION" equiv-text="&lt;/s"/><x id="CLOSE_TAG_SPAN" ctype="x-span"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/home/home.component.html</context>
+          <context context-type="linenumber">79,80</context>
+        </context-group>
+        <note priority="1" from="description">ESNCARD N°</note>
+        <note priority="1" from="meaning">ESNCARD N°</note>
+      </trans-unit>
+      <trans-unit id="email" datatype="html">
+        <source>E-mail</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/login/login.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">email</note>
+        <note priority="1" from="meaning">Email</note>
+      </trans-unit>
+      <trans-unit id="password" datatype="html">
+        <source>Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/login/login.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <note priority="1" from="description">password</note>
+        <note priority="1" from="meaning">Password</note>
+      </trans-unit>
+      <trans-unit id="forgotYourPassword" datatype="html">
+        <source>Forgot your password?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/login/login.component.html</context>
+          <context context-type="linenumber">35,36</context>
+        </context-group>
+        <note priority="1" from="description">Forgot your password?</note>
+        <note priority="1" from="meaning">Forgot your password?</note>
+      </trans-unit>
+      <trans-unit id="name*" datatype="html">
+        <source>Name *</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/register/register.component.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+        <note priority="1" from="description">name *</note>
+        <note priority="1" from="meaning">Name *</note>
+      </trans-unit>
+      <trans-unit id="surname*" datatype="html">
+        <source>Surname *</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/register/register.component.html</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/register/register.component.html</context>
+          <context context-type="linenumber">21,22</context>
+        </context-group>
+        <note priority="1" from="description">surname *</note>
+        <note priority="1" from="meaning">Surname *</note>
+      </trans-unit>
+      <trans-unit id="email*" datatype="html">
+        <source>E-mail *</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/register/register.component.html</context>
+          <context context-type="linenumber">29,30</context>
+        </context-group>
+        <note priority="1" from="description">email *</note>
+        <note priority="1" from="meaning">Email *</note>
+      </trans-unit>
+      <trans-unit id="phone*" datatype="html">
+        <source>Phone *</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/register/register.component.html</context>
+          <context context-type="linenumber">35,36</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/register/register.component.html</context>
+          <context context-type="linenumber">43,44</context>
+        </context-group>
+        <note priority="1" from="description">phone *</note>
+        <note priority="1" from="meaning">Phone *</note>
+      </trans-unit>
+      <trans-unit id="birthdate*" datatype="html">
+        <source>Birthdate *</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/register/register.component.html</context>
+          <context context-type="linenumber">51,52</context>
+        </context-group>
+        <note priority="1" from="description">birthdate *</note>
+        <note priority="1" from="meaning">Birthdate *</note>
+      </trans-unit>
+      <trans-unit id="nationality*" datatype="html">
+        <source>Nationality *</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/register/register.component.html</context>
+          <context context-type="linenumber">59,60</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/register/register.component.html</context>
+          <context context-type="linenumber">73,74</context>
+        </context-group>
+        <note priority="1" from="description">nationality *</note>
+        <note priority="1" from="meaning">Nationality *</note>
+      </trans-unit>
+      <trans-unit id="studentAt*" datatype="html">
+        <source>Student At *</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/register/register.component.html</context>
+          <context context-type="linenumber">87,88</context>
+        </context-group>
+        <note priority="1" from="description">student At *</note>
+        <note priority="1" from="meaning">Student At *</note>
+      </trans-unit>
+      <trans-unit id="esnSection*" datatype="html">
+        <source>ESN Section *</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/register/register.component.html</context>
+          <context context-type="linenumber">99,100</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/register/register.component.html</context>
+          <context context-type="linenumber">113,114</context>
+        </context-group>
+        <note priority="1" from="description">ESN Section *</note>
+        <note priority="1" from="meaning">ESN Section *</note>
+      </trans-unit>
+      <trans-unit id="nrEsnCard" datatype="html">
+        <source>Nr ESN Card</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/register/register.component.html</context>
+          <context context-type="linenumber">127,128</context>
+        </context-group>
+        <note priority="1" from="description">Nr ESN Card</note>
+        <note priority="1" from="meaning">Nr ESN Card</note>
+      </trans-unit>
+      <trans-unit id="password*" datatype="html">
+        <source>Password *</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/register/register.component.html</context>
+          <context context-type="linenumber">133,134</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/core/app-access/components/register/register.component.html</context>
+          <context context-type="linenumber">146,147</context>
+        </context-group>
+        <note priority="1" from="description">password *</note>
+        <note priority="1" from="meaning">Password *</note>
+      </trans-unit>
+      <trans-unit id="404ErrorPageNotFound" datatype="html">
+        <source> 404 Error, requested page not found</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/page-not-found/page-not-found.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+        <note priority="1" from="description">The message showed if the page at the Url was not found</note>
+        <note priority="1" from="meaning">404 Error, requested page not found</note>
+      </trans-unit>
+      <trans-unit id="unauthorized" datatype="html">
+        <source>Unauthorized</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/unauthorized-page/unauthorized-page.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="description"> Unauthorized </note>
+        <note priority="1" from="meaning">Unauthorized</note>
+      </trans-unit>
+      <trans-unit id="notAuthorizedForRequestPage" datatype="html">
+        <source> You are not authorized to access the requested page.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/unauthorized-page/unauthorized-page.component.html</context>
+          <context context-type="linenumber">14,15</context>
+        </context-group>
+        <note priority="1" from="description"> You are not authorized to access the requested page. </note>
+        <note priority="1" from="meaning">You are not authorized to access the requested page. </note>
+      </trans-unit>
+      <trans-unit id="checkCredential" datatype="html">
+        <source>Check your credentials.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/unauthorized-page/unauthorized-page.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <note priority="1" from="description">Check your credentials.</note>
+        <note priority="1" from="meaning">Check your credentials.</note>
       </trans-unit>
     </body>
   </file>

@@ -7,7 +7,7 @@ import {
   HTTP_INTERCEPTORS
 } from '@angular/common/http';
 import { delay, finalize, Observable, timeout } from 'rxjs';
-import { SpinnerSharedService } from 'app/services/spinner-shared/spinner-shared.service';
+import { SpinnerSharedService } from 'app/core/app-access/services/spinner-shared/spinner-shared.service';
 
 @Injectable()
 export class SpinnerInterceptor implements HttpInterceptor {

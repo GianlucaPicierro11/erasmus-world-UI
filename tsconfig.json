@@ -6,7 +6,13 @@
     "paths": {
       "@env/*": [
         "environments/*"
-      ]
+      ],
+      "@common/*": [
+        "app/common/*"
+      ],
+      "@core/*": [
+        "app/core/*"
+      ],
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

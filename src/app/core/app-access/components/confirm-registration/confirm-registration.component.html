@@ -1,0 +1,17 @@
+<div class="row full-height align-items-center justify-content-center">
+    <div class="col-10 align-self-center text-center">
+        <mat-card>
+            <mat-card-content>
+                <h1 i18n="Confirm registration|confirm registration@@confirmRegistration">Confirm registration</h1>
+                <p *ngIf="confirmation | async"
+                    i18n="Registration confirmed|registration confirmed@@registrationConfirmed">
+                    Registration confirmed
+                </p>
+                <p [hidden]="confirmation | async"
+                    i18n=" Maybe your confirmation token is expired or you already use it| Maybe your confirmation token is expired or you already use it@@confirmationTokenExpired">
+                    Maybe your confirmation token is expired or you already use it
+                </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

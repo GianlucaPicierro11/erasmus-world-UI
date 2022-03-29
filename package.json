@@ -4,9 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "node server",
-    "start-local": "ng serve --proxy-config proxy.conf.json",
+    "start-local": "concurrently \"ng build --watch=true\" \"ng serve --port 4200\" ",
     "build": "ng build",
     "heroku-postbuild": "ng build --configuration=production",
+    "i18n": "ng extract-i18n",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -28,6 +29,7 @@
     "@angular/platform-browser-dynamic": "~13.0.0",
     "@angular/router": "~13.0.0",
     "compression": "^1.7.4",
+    "concurrently": "^5.1.0",
     "express": "^4.17.1",
     "locale": "^0.1.0",
     "moment": "^2.29.1",
