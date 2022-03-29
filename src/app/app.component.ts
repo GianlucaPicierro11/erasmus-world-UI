@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
-  languageSelected: LanguageModel = { localeId: LanguageLocaleIdEnum.ENGLISH, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ENGLISH) };
+  languageSelected: LanguageModel;
   languages: Array<LanguageModel> = [
     { localeId: LanguageLocaleIdEnum.ENGLISH, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ENGLISH) },
     { localeId: LanguageLocaleIdEnum.ITALIAN, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ITALIAN) }
@@ -35,6 +35,8 @@ export class AppComponent implements OnInit {
     public loginSharedService: LoginSharedService, private localeLanguageService: LocaleLanguageService) {
     console.log(window.location);
     console.log(window.location.href);
+    this.languageSelected = window.location.href.includes(`/${LanguageLocaleIdEnum.ITALIAN}`) ? { localeId: LanguageLocaleIdEnum.ITALIAN, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ITALIAN) } : { localeId: LanguageLocaleIdEnum.ENGLISH, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ENGLISH) };
+
   }
 
   private getLanguagePath(languageFlagPathEnum: LanguageFlagPathEnum): string {
@@ -71,10 +73,7 @@ export class AppComponent implements OnInit {
     let previusLanguageSelected = this.languageSelected;
     this.languageSelected = languageFlagPath;
     this.localeLanguageService.setLanguage(languageFlagPath.localeId);
-    console.log(window.location);
-    console.log(window.location.href);
-
-    window.location.assign(environment.BASE_URL_UI.replace(previusLanguageSelected.localeId, languageFlagPath.localeId));
+    window.location.assign(window.location.href.replace(previusLanguageSelected.localeId, languageFlagPath.localeId));
   }
 }
 
