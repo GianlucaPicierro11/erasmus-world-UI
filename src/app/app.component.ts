@@ -35,7 +35,15 @@ export class AppComponent implements OnInit {
     public loginSharedService: LoginSharedService, private localeLanguageService: LocaleLanguageService) {
     console.log(window.location);
     console.log(window.location.href);
-    this.languageSelected = window.location.href.includes(`/${LanguageLocaleIdEnum.ITALIAN}`) ? { localeId: LanguageLocaleIdEnum.ITALIAN, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ITALIAN) } : { localeId: LanguageLocaleIdEnum.ENGLISH, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ENGLISH) };
+    if (window.location.href.includes(`/${LanguageLocaleIdEnum.ITALIAN}`)) {
+      this.languageSelected = { localeId: LanguageLocaleIdEnum.ITALIAN, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ITALIAN) }
+      this.localeLanguageService.setLanguage(LanguageLocaleIdEnum.ITALIAN);
+    } else {
+      this.languageSelected = { localeId: LanguageLocaleIdEnum.ENGLISH, flagPath: this.getLanguagePath(LanguageFlagPathEnum.ENGLISH) };
+      this.localeLanguageService.setLanguage(LanguageLocaleIdEnum.ENGLISH);
+    }
+
+
 
   }
 
