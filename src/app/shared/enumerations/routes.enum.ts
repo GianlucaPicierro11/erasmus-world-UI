@@ -3,8 +3,7 @@ export enum RoutesEnum {
     LOGIN = 'login',
     REGISTER = 'register',
     CONFIRM_REGISTRATION = 'confirm/:user/:token',
-    PROFILE = 'profile',
-    USER = 'user',
-    MOD = 'mod',
-    ADMIN = 'admin',
+    FORGOT_PASSWORD = 'forgot-password',
+    UPDATE_PASSWORD = 'update-password/:user/:token',
+
 }

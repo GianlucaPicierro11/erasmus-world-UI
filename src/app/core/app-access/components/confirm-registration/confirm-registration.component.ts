@@ -26,12 +26,12 @@ export class ConfirmRegistrationComponent implements OnInit {
       next: (confirmation) => {
         if (confirmation) {
           this.confirmation.next(confirmation != null || confirmation != undefined);
-          this.snackbarService.openSuccessSnackBar("Registration confirmed")
+          this.snackbarService.openSuccessSnackBar("Registration confirmed", "Registrazione confermata")
           this.router.navigateByUrl(RoutesEnum.LOGIN);
         }
       },
       error: (e) => {
-        this.snackbarService.openErrorSnackBar(e.error.error)
+        this.snackbarService.openErrorSnackBar(e.error.error, e.error.error)
       },
       complete: () => {
         this.router.navigateByUrl(RoutesEnum.LOGIN);

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ForgotPasswordComponent } from '@core/app-access/components/forgot-password/forgot-password.component';
+import { UpdatePasswordComponent } from '@core/app-access/components/update-password/update-password.component';
 import { ConfirmRegistrationComponent } from './core/app-access/components/confirm-registration/confirm-registration.component';
 import { HomeComponent } from './core/app-access/components/home/home.component';
 import { LoginComponent } from './core/app-access/components/login/login.component';
@@ -22,6 +24,8 @@ const appRoutes: Routes = [
       { path: RoutesEnum.LOGIN, component: LoginComponent },
       { path: RoutesEnum.REGISTER, component: RegisterComponent },
       { path: RoutesEnum.CONFIRM_REGISTRATION, component: ConfirmRegistrationComponent },
+      { path: RoutesEnum.FORGOT_PASSWORD, component: ForgotPasswordComponent },
+      { path: RoutesEnum.UPDATE_PASSWORD, component: UpdatePasswordComponent },
 
       { path: 'unauthorized', pathMatch: 'full', component: UnauthorizedPageComponent },
       { path: '**', pathMatch: 'full', component: PageNotFoundComponent },

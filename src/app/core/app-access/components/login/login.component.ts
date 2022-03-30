@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
-      this.snackbarService.openInfoSnackWarn("You are already logged in");
+      this.snackbarService.openInfoSnackWarn("You are already logged in", "Sei già loggato");
       this.router.navigateByUrl(RoutesEnum.HOME);
     }
   }
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveUser(data);
       },
       error: (e) => {
-        this.snackbarService.openErrorSnackBar(e.error.error)
+        this.snackbarService.openErrorSnackBar(e.error.error, e.error.error)
         this.loginSharedService.pushIsLoggedIn(false);
         this.loginSharedService.pushIsLoggedOut(true);
       },

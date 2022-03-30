@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
       university: new FormControl(null, [Validators.required]),
       esnSectionSearch: new FormControl(""),
       esnSection: new FormControl(null, [Validators.required]),
-      nrEsnCard: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
+      nrEsnCard: new FormControl(''),
       password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(120)]),
     });
   }
@@ -146,12 +146,12 @@ export class RegisterComponent implements OnInit {
     this.authService.register(signupRequest).subscribe({
       next: (data) => {
         if (data) {
-          this.snackbarService.openSuccessSnackBar("Registered successfully, please check your email and confirm your account")
+          this.snackbarService.openSuccessSnackBar("Registered successfully, please check your email and confirm your account", "Ti sei registrato correttamente, per favore controlla la tua e-mail per confermare il tuo account")
           this.router.navigateByUrl(RoutesEnum.LOGIN);
         }
       },
       error: (e) => {
-        this.snackbarService.openErrorSnackBar(e.error.error)
+        this.snackbarService.openErrorSnackBar(e.error.error, e.error.error)
       },
       complete: () => {
         this.router.navigateByUrl(RoutesEnum.LOGIN);

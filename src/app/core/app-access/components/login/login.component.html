@@ -27,7 +27,7 @@
                     <div class="row">
                         <div class="col">
                             <button mat-raised-button color="primary" class="full-width" (click)="login()"
-                                i18n="Login|login button@@login">Login</button>
+                                i18n="Login|login button@@login" [disabled]="this.form.invalid">Login</button>
                         </div>
                     </div>
                     <div class="row padding-top-10">
