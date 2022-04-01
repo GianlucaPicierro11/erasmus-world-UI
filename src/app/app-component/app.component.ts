@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
   @ViewChild('flags', { static: false })
   flagsSelect!: MatMenu;
 
+  logoPath: string = environment.BASE_URL_UI + 'assets/images/ESN_short-logo-Satellite.png';
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;

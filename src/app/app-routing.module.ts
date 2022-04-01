@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CookiesPolicyComponent } from '@core/app-access/components/cookies-policy/cookies-policy.component';
+import { DataPolicyComponent } from '@core/app-access/components/data-policy/data-policy.component';
 import { ForgotPasswordComponent } from '@core/app-access/components/forgot-password/forgot-password.component';
+import { TermOfUseComponent } from '@core/app-access/components/term-of-use/term-of-use.component';
 import { UpdatePasswordComponent } from '@core/app-access/components/update-password/update-password.component';
 import { ConfirmRegistrationComponent } from './core/app-access/components/confirm-registration/confirm-registration.component';
 import { HomeComponent } from './core/app-access/components/home/home.component';
@@ -26,6 +29,9 @@ const appRoutes: Routes = [
       { path: RoutesEnum.CONFIRM_REGISTRATION, component: ConfirmRegistrationComponent },
       { path: RoutesEnum.FORGOT_PASSWORD, component: ForgotPasswordComponent },
       { path: RoutesEnum.UPDATE_PASSWORD, component: UpdatePasswordComponent },
+      { path: RoutesEnum.TERM_OF_USE, component: TermOfUseComponent },
+      { path: RoutesEnum.DATA_POLICY, component: DataPolicyComponent },
+      { path: RoutesEnum.COOKIES_POLICY, component: CookiesPolicyComponent },
 
       { path: 'unauthorized', pathMatch: 'full', component: UnauthorizedPageComponent },
       { path: '**', pathMatch: 'full', component: PageNotFoundComponent },

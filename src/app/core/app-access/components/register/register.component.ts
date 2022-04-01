@@ -167,4 +167,16 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  goToTerms() {
+    this.router.navigateByUrl(RoutesEnum.TERM_OF_USE);
+  }
+
+  goToDataPolicy() {
+    this.router.navigateByUrl(RoutesEnum.DATA_POLICY);
+  }
+
+  goToCookiesPolicy() {
+    this.router.navigateByUrl(RoutesEnum.COOKIES_POLICY);
+  }
+
 }

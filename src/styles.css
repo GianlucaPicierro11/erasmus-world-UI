@@ -94,10 +94,20 @@ app-confirm-registration {
 a,
 .changeCursor {
     text-decoration: underline !important;
+    text-decoration: solid !important;
+    color: #00376b !important;
 }
 
 a:hover,
 .changeCursor:hover {
     cursor: pointer !important;
     color: #06c !important;
+}
+
+.padding-top-18 {
+    padding-top: 18.813px;
+}
+
+.padding-bottom-18 {
+    padding-bottom: 18.813px;
 }

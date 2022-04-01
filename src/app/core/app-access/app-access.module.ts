@@ -8,6 +8,9 @@ import { ConfirmRegistrationComponent } from './components/confirm-registration/
 import { SharedModule } from 'app/shared/shared.module';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { UpdatePasswordComponent } from './components/update-password/update-password.component';
+import { TermOfUseComponent } from './components/term-of-use/term-of-use.component';
+import { DataPolicyComponent } from './components/data-policy/data-policy.component';
+import { CookiesPolicyComponent } from './components/cookies-policy/cookies-policy.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { UpdatePasswordComponent } from './components/update-password/update-pas
     HomeComponent,
     ConfirmRegistrationComponent,
     ForgotPasswordComponent,
-    UpdatePasswordComponent
+    UpdatePasswordComponent,
+    TermOfUseComponent,
+    DataPolicyComponent,
+    CookiesPolicyComponent
   ],
   imports: [
     SharedModule,

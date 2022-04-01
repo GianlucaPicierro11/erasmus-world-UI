@@ -2,7 +2,7 @@
     flex: 1 1 auto;
 }
 
-.flag-language-img{
+.flag-language-img {
     vertical-align: middle;
     border-style: none;
     padding: 0;
@@ -11,4 +11,12 @@
     height: 16px;
     flex-shrink: 0;
     line-height: 40px;
+}
+
+.short-logo-img {
+    vertical-align: middle;
+    border-style: none;
+    padding: 0;
+    width: 25px;
+    height: 25px;
 }
