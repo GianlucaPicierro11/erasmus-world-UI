@@ -7,6 +7,7 @@ import { AuthHttpService } from 'app/core/app-access/services/auth-http/auth-htt
 import { LoginSharedService } from 'app/core/app-access/services/login-shared/login-shared.service';
 import { SnackbarService } from 'app/core/app-access/services/snackbar/snackbar.service';
 import { TokenStorageService } from 'app/core/app-access/services/token-storage/token-storage.service';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ import { TokenStorageService } from 'app/core/app-access/services/token-storage/
 export class LoginComponent implements OnInit {
   hidePassword = true;
   form: FormGroup;
+  logoPath: string = environment.BASE_URL_UI + 'assets/images/ESN_full-logo-Satellite.png';
 
   constructor(private authService: AuthHttpService, private tokenStorage: TokenStorageService,
     private fb: FormBuilder, private router: Router, private loginSharedService: LoginSharedService, private snackbarService: SnackbarService) {

@@ -111,3 +111,11 @@ a:hover,
 .padding-bottom-18 {
     padding-bottom: 18.813px;
 }
+
+.full-logo-img {
+    vertical-align: middle;
+    border-style: none;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}

@@ -11,6 +11,7 @@ import { SnackbarService } from 'app/core/app-access/services/snackbar/snackbar.
 import { TypologicalService } from 'app/core/app-access/services/typological/typological.service';
 import { BehaviorSubject, debounceTime, finalize, map, Observable, startWith, switchMap, tap } from 'rxjs';
 import * as moment from 'moment';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'app-register',
@@ -23,6 +24,7 @@ export class RegisterComponent implements OnInit {
   hideMatchPassword = true;
   startDate = new Date(1990, 0, 1);
   isLoadingUniversities = false;
+  logoPath: string = environment.BASE_URL_UI + 'assets/images/ESN_full-logo-Satellite.png';
 
   nationalities: NationalityModel[] = [];
   filteredNationalities: Observable<NationalityModel[]> | undefined;
