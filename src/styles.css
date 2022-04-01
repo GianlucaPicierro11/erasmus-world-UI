@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body, app-root, #container, #app, app-login {
+html,
+body,
+app-root,
+#container,
+#app,
+app-login {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -72,14 +77,27 @@ body {
     z-index: 1000;
 }
 
-.margin-0{
+.margin-0 {
     margin: 0px;
 }
 
-.padding-0{
+.padding-0 {
     padding: 0px;
 }
 
-app-home, app-register, app-confirm-registration{
+app-home,
+app-register,
+app-confirm-registration {
     height: 100%;
+}
+
+a,
+.changeCursor {
+    text-decoration: underline !important;
+}
+
+a:hover,
+.changeCursor:hover {
+    cursor: pointer !important;
+    color: #06c !important;
 }
