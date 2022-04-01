@@ -1,4 +1,5 @@
 export interface NewPasswordRequestModel {
-    email: string,
+    token: string,
+    userId: number,
     password: string
 }

@@ -153,6 +153,21 @@
                     </mat-form-field>
                 </div>
             </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field appearance="fill" class="full-width">
+                        <mat-label i18n="Confirm password *|Confirm password *@@confirmPassword*">Confirm
+                            password *
+                        </mat-label>
+                        <input matInput [type]="hideMatchPassword ? 'password' : 'text'"
+                            formControlName="match-password">
+                        <button mat-icon-button matSuffix (click)="hideMatchPassword = !hideMatchPassword"
+                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideMatchPassword">
+                            <mat-icon>{{hideMatchPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+            </div>
         </form>
         <div class="row">
             <div class="col">

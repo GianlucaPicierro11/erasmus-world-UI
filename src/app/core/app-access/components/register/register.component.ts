@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RoutesEnum } from 'app/shared/enumerations/routes.enum';
 import { EsnSectionModel } from 'app/core/app-access/models/esnsection.model';
@@ -20,6 +20,7 @@ import * as moment from 'moment';
 export class RegisterComponent implements OnInit {
   form: FormGroup;
   hide = true;
+  hideMatchPassword = true;
   startDate = new Date(1990, 0, 1);
   isLoadingUniversities = false;
 
@@ -45,8 +46,15 @@ export class RegisterComponent implements OnInit {
       esnSectionSearch: new FormControl(""),
       esnSection: new FormControl(null, [Validators.required]),
       nrEsnCard: new FormControl(''),
-      password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(120)]),
-    });
+      password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!-_%*?&])[A-Za-z\d$@$!-_%*?&].{8,}'), Validators.maxLength(120)]),
+      'match-password': new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!-_%*?&])[A-Za-z\d$@$!-_%*?&].{8,}'), Validators.maxLength(120)]),
+    }, { validators: this.checkPasswords });
+  }
+
+  checkPasswords: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
+    let pass = group.get('password')?.value;
+    let confirmPass = group.get('match-password')?.value
+    return pass === confirmPass ? null : { notSame: true }
   }
 
   dateValidator(control: FormControl): { [s: string]: boolean } {

@@ -23,6 +23,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   resetPassword() {
     let email: string = this.form.get("email")?.value;
+    console.log(email)
     this.authService.resetPassword(email).subscribe({
       next: (confirmation) => {
         if (confirmation) {
