@@ -12,6 +12,8 @@ import { TypologicalService } from 'app/core/app-access/services/typological/typ
 import { BehaviorSubject, debounceTime, finalize, map, Observable, startWith, switchMap, tap } from 'rxjs';
 import * as moment from 'moment';
 import { environment } from '@env/environment';
+import { LocaleLanguageService } from '@core/app-access/services/locale-language/locale-language.service';
+import { LanguageLocaleIdEnum } from 'app/shared/enumerations/language-locale-id.enum';
 
 @Component({
   selector: 'app-register',
@@ -34,11 +36,11 @@ export class RegisterComponent implements OnInit {
   filteredEsnSections: Observable<EsnSectionModel[]> | undefined;
 
   constructor(private authService: AuthHttpService, private fb: FormBuilder, private snackbarService: SnackbarService,
-    private typologicalService: TypologicalService, private router: Router) {
+    private typologicalService: TypologicalService, private router: Router, private localeLanguageService: LocaleLanguageService) {
     this.form = fb.group({
       name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
       surname: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(50)]),
       phone: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
       birthDate: new FormControl('', [Validators.required, this.dateValidator]),
       nationalitySearch: new FormControl(""),
@@ -48,8 +50,8 @@ export class RegisterComponent implements OnInit {
       esnSectionSearch: new FormControl(""),
       esnSection: new FormControl(null, [Validators.required]),
       nrEsnCard: new FormControl(''),
-      password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!-_%*?&])[A-Za-z\d$@$!-_%*?&].{8,}'), Validators.maxLength(120)]),
-      'match-password': new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!-_%*?&])[A-Za-z\d$@$!-_%*?&].{8,}'), Validators.maxLength(120)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.maxLength(120)]),
+      'match-password': new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.maxLength(120)]),
     }, { validators: this.checkPasswords });
   }
 
@@ -57,6 +59,94 @@ export class RegisterComponent implements OnInit {
     let pass = group.get('password')?.value;
     let confirmPass = group.get('match-password')?.value
     return pass === confirmPass ? null : { notSame: true }
+  }
+
+  getNameErrorMessage() {
+    if (this.form.get('name')?.hasError('required')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Campo obbligatorio' : 'You must enter a value';
+    }
+    if (this.form.get('name')?.hasError('minlength')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Sono necessari almeno due caratteri' : 'You must enter at least two characters';
+    }
+    if (this.form.get('name')?.hasError('maxlength')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Non è possibile inserire più di 20 caratteri' : 'You must enter less than 20 caracters';
+    }
+    return '';
+  }
+
+  getSurnameErrorMessage() {
+    if (this.form.get('surname')?.hasError('required')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Campo obbligatorio' : 'You must enter a value';
+    }
+    if (this.form.get('surname')?.hasError('minlength')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Sono necessari almeno due caratteri' : 'You must enter at least two characters';
+    }
+    if (this.form.get('surname')?.hasError('maxlength')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Non è possibile inserire più di 20 caratteri' : 'You must enter less than 20 caracters';
+    }
+    return '';
+  }
+
+  getEmailErrorMessage() {
+    if (this.form.get('email')?.hasError('required')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Campo obbligatorio' : 'You must enter a value';
+    }
+    if (this.form.get('email')?.hasError('email')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Email non valida' : 'Not a valid email';
+    }
+    if (this.form.get('email')?.hasError('maxlength')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Non è possibile inserire più di 50 caratteri' : 'You must enter less than 50 caracters';
+    }
+    return '';
+  }
+
+  getPhoneErrorMessage() {
+    if (this.form.get('phone')?.hasError('required')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Campo obbligatorio' : 'You must enter a value';
+    }
+    if (this.form.get('phone')?.hasError('minlength')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Sono necessari almeno sei caratteri' : 'You must enter at least six characters';
+    }
+    if (this.form.get('phone')?.hasError('maxlength')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Non è possibile inserire più di 50 caratteri' : 'You must enter less than 50 caracters';
+    }
+    return '';
+  }
+
+  getBirthDateErrorMessage() {
+    if (this.form.get('birthDate')?.hasError('required')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Campo obbligatorio' : 'You must enter a value';
+    }
+    if (this.form.get('birthDate')?.hasError('invalidDate')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Sei nato nel futuro?' : 'Are you born in the future?';
+    }
+    return '';
+  }
+
+  getPasswordErrorMessage() {
+    if (this.form.get('password')?.hasError('required')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Campo obbligatorio' : 'You must enter a value';
+    }
+    if (this.form.get('password')?.hasError('minlength')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Sono necessari almeno otto caratteri' : 'You must enter at least eight characters';
+    }
+    if (this.form.get('password')?.hasError('maxlength')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Non è possibile inserire più di 120 caratteri' : 'You must enter less than 120 caracters';
+    }
+    if (this.form.get('password')?.hasError('pattern')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Password non valida' : 'Not a valid password';
+    }
+    return '';
+  }
+
+  getMatchPasswordErrorMessage() {
+    if (this.form.get('match-password')?.hasError('required')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Campo obbligatorio' : 'You must enter a value';
+    }
+    if (this.form?.hasError('notSame')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Le password non combaciano' : 'Passwords do not match';
+    }
+    return '';
   }
 
   dateValidator(control: FormControl): { [s: string]: boolean } {
@@ -167,6 +257,10 @@ export class RegisterComponent implements OnInit {
         this.router.navigateByUrl(RoutesEnum.LOGIN);
       }
     });
+  }
+
+  goToLogin() {
+    this.router.navigateByUrl(RoutesEnum.LOGIN);
   }
 
   goToTerms() {

@@ -20,12 +20,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { UnauthorizedPageComponent } from './components/unauthorized-page/unauthorized-page.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatListModule } from '@angular/material/list';
+import { FlagsLanguageSelectComponent } from './components/flags-language-select/flags-language-select.component';
 
 @NgModule({
   declarations: [
     SpinnerComponent,
     UnauthorizedPageComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    FlagsLanguageSelectComponent
   ],
   imports: [
     MatProgressSpinnerModule,
@@ -46,6 +50,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     MatAutocompleteModule,
     MatSelectModule,
     CommonModule,
+    MatTooltipModule,
+    MatListModule,
   ],
   exports: [
     //imports
@@ -67,10 +73,13 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     MatAutocompleteModule,
     MatSelectModule,
     CommonModule,
+    MatTooltipModule,
+    MatListModule,
     //declarations
     SpinnerComponent,
     UnauthorizedPageComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    FlagsLanguageSelectComponent
   ]
 })
 

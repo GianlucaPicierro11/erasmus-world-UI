@@ -22,8 +22,8 @@ export class UpdatePasswordComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private authService: AuthHttpService, private snackbarService: SnackbarService, private router: Router) {
     this.form = fb.group({
-      'new-password': new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!-_%*?&])[A-Za-z\d$@$!-_%*?&].{8,}'), Validators.maxLength(120)]),
-      'match-password': new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!-_%*?&])[A-Za-z\d$@$!-_%*?&].{8,}'), Validators.maxLength(120)]),
+      'new-password': new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.maxLength(120)]),
+      'match-password': new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.maxLength(120)]),
     }, { validators: this.checkPasswords });
   }
 

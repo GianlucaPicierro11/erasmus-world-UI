@@ -1,6 +1,6 @@
 <div id="app">
     <app-spinner></app-spinner>
-    <mat-toolbar>
+    <mat-toolbar class="ewa-header" *ngIf="this.loginSharedService.isLoggedIn$ | async">
         <mat-toolbar-row>
             <button mat-icon-button aria-label="Menu button" [matMenuTriggerFor]="menu">
                 <mat-icon>menu</mat-icon>
@@ -14,12 +14,7 @@
             <span fxShow fxHide.lt-sm="true">Erasmus World App</span>
             <span fxHide fxShow.lt-sm="true">EWA</span>
             <span class="toolbar-spacer"></span>
-            <img class="flag-language-img" alt="flag-language-img" src="{{languageSelected.flagPath}}"
-                [matMenuTriggerFor]="flags">
-            <mat-menu #flags="matMenu">
-                <button mat-menu-item *ngFor="let language of languages" (click)="onSelect(language)"><img
-                        class="flag-language-img" alt="flag-language-img" src="{{language.flagPath}}"></button>
-            </mat-menu>
+            <app-flags-language-select></app-flags-language-select>
             <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"
                 [matMenuTriggerFor]="loginMenu" fxHide fxShow.lt-sm="true">
                 <mat-icon>person</mat-icon>

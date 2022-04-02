@@ -15,6 +15,7 @@ import { environment } from '@env/environment';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
   hidePassword = true;
   form: FormGroup;
   logoPath: string = environment.BASE_URL_UI + 'assets/images/ESN_full-logo-Satellite.png';

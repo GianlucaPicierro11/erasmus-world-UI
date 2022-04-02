@@ -1,0 +1,5 @@
+<img class="flag-language-img" alt="flag-language-img" src="{{languageSelected.flagPath}}" [matMenuTriggerFor]="flags">
+<mat-menu #flags="matMenu">
+    <button mat-menu-item *ngFor="let language of languages" (click)="onSelect(language)"><img class="flag-language-img"
+            alt="flag-language-img" src="{{language.flagPath}}"></button>
+</mat-menu>
