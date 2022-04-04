@@ -5,6 +5,7 @@ import { UserModel } from 'app/core/app-access/models/user.model';
 import { AuthHttpService } from 'app/core/app-access/services/auth-http/auth-http.service';
 import { TokenStorageService } from 'app/core/app-access/services/token-storage/token-storage.service';
 import { Observable } from 'rxjs';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,7 @@ import { Observable } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
 
+  logoPath: string = environment.BASE_URL_UI + 'assets/images/ESN_full-logo-Satellite.png';
   isLoggedIn = false;
   hide = true;
   user$: Observable<UserModel> | undefined;

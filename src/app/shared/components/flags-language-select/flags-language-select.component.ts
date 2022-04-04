@@ -9,7 +9,7 @@ import { LanguageLocaleIdEnum } from 'app/shared/enumerations/language-locale-id
 @Component({
   selector: 'app-flags-language-select',
   templateUrl: './flags-language-select.component.html',
-  styleUrls: ['./flags-language-select.component.css']
+  styleUrls: ['./flags-language-select.component.css'],
 })
 export class FlagsLanguageSelectComponent implements OnInit {
 

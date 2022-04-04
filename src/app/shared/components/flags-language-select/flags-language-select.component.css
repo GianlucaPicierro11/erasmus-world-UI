@@ -8,3 +8,7 @@
     flex-shrink: 0;
     line-height: 40px;
 }
+
+::ng-deep .flag-language-menu {
+    min-width: 57px !important;
+}

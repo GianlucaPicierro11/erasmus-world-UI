@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NewPasswordRequestModel } from '@core/app-access/models/new-password-request.model';
+import { LocaleLanguageService } from '@core/app-access/services/locale-language/locale-language.service';
+import { environment } from '@env/environment';
 import { AuthHttpService } from 'app/core/app-access/services/auth-http/auth-http.service';
 import { SnackbarService } from 'app/core/app-access/services/snackbar/snackbar.service';
+import { LanguageLocaleIdEnum } from 'app/shared/enumerations/language-locale-id.enum';
 import { RoutesEnum } from 'app/shared/enumerations/routes.enum';
 
 @Component({
@@ -13,6 +16,7 @@ import { RoutesEnum } from 'app/shared/enumerations/routes.enum';
 })
 export class UpdatePasswordComponent implements OnInit {
 
+  logoPath: string = environment.BASE_URL_UI + 'assets/images/ESN_full-logo-Satellite.png';
   hideNewPassword = true;
   hideMatchPassword = true;
   user!: string | null;
@@ -20,7 +24,8 @@ export class UpdatePasswordComponent implements OnInit {
   form: FormGroup;
 
 
-  constructor(private fb: FormBuilder, private route: ActivatedRoute, private authService: AuthHttpService, private snackbarService: SnackbarService, private router: Router) {
+  constructor(private fb: FormBuilder, private route: ActivatedRoute, private authService: AuthHttpService, private snackbarService: SnackbarService,
+    private router: Router, private localeLanguageService: LocaleLanguageService) {
     this.form = fb.group({
       'new-password': new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.maxLength(120)]),
       'match-password': new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.maxLength(120)]),
@@ -36,6 +41,32 @@ export class UpdatePasswordComponent implements OnInit {
     let pass = group.get('new-password')?.value;
     let confirmPass = group.get('match-password')?.value
     return pass === confirmPass ? null : { notSame: true }
+  }
+
+  getPasswordErrorMessage() {
+    if (this.form.get('new-password')?.hasError('required')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Campo obbligatorio' : 'You must enter a value';
+    }
+    if (this.form.get('new-password')?.hasError('minlength')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Sono necessari almeno otto caratteri' : 'You must enter at least eight characters';
+    }
+    if (this.form.get('new-password')?.hasError('maxlength')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Non è possibile inserire più di 120 caratteri' : 'You must enter less than 120 caracters';
+    }
+    if (this.form.get('new-password')?.hasError('pattern')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Password non valida' : 'Not a valid password';
+    }
+    return '';
+  }
+
+  getMatchPasswordErrorMessage() {
+    if (this.form.get('match-password')?.hasError('required')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Campo obbligatorio' : 'You must enter a value';
+    }
+    if (this.form?.hasError('notSame')) {
+      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Le password non combaciano' : 'Passwords do not match';
+    }
+    return '';
   }
 
   saveNewPassword() {
