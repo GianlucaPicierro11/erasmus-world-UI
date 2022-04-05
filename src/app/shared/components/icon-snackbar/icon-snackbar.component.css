@@ -1,0 +1,21 @@
+.snack-container {
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.success-color {
+    color: green;
+}
+
+.error-color {
+    color: red;
+}
+
+.info-color {
+    color: 06c;
+}
+
+.warn-color {
+    color: orange;
+}

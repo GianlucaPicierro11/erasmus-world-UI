@@ -11,6 +11,8 @@ import { UpdatePasswordComponent } from './components/update-password/update-pas
 import { TermOfUseComponent } from './components/term-of-use/term-of-use.component';
 import { DataPolicyComponent } from './components/data-policy/data-policy.component';
 import { CookiesPolicyComponent } from './components/cookies-policy/cookies-policy.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+import { ResendEmailVerificationComponent } from './components/resend-email-verification/resend-email-verification.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { CookiesPolicyComponent } from './components/cookies-policy/cookies-poli
     UpdatePasswordComponent,
     TermOfUseComponent,
     DataPolicyComponent,
-    CookiesPolicyComponent
+    CookiesPolicyComponent,
+    EditProfileComponent,
+    ResendEmailVerificationComponent
   ],
   imports: [
     SharedModule,

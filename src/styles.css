@@ -36,28 +36,28 @@ body {
 .snackbarSuccess {
     background-color: white;
     border-color: green !important;
-    border-left: 15px solid;
+    border-left: 5px solid;
     color: black;
 }
 
 .snackbarError {
     background-color: white;
     border-color: red !important;
-    border-left: 15px solid;
+    border-left: 5px solid;
     color: black;
 }
 
 .snackbarInfo {
     background-color: white;
     border-color: #06c !important;
-    border-left: 15px solid;
+    border-left: 5px solid;
     color: black;
 }
 
 .snackbarWarn {
     background-color: white;
     border-color: orange !important;
-    border-left: 15px solid;
+    border-left: 5px solid;
     color: black;
 }
 
@@ -91,8 +91,7 @@ app-confirm-registration {
     height: 100%;
 }
 
-a,
-.changeCursor {
+a {
     text-decoration: underline !important;
     text-decoration: solid !important;
     color: #00376b !important;

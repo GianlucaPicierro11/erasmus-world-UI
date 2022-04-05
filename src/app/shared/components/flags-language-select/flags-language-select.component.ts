@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatMenu } from '@angular/material/menu';
 import { LanguageModel } from '@core/app-access/models/language.model';
-import { LocaleLanguageService } from '@core/app-access/services/locale-language/locale-language.service';
+import { LocaleLanguageService } from 'app/shared/services/locale-language/locale-language.service';
 import { environment } from '@env/environment';
 import { LanguageFlagPathEnum } from 'app/shared/enumerations/language-flag-path.enum';
 import { LanguageLocaleIdEnum } from 'app/shared/enumerations/language-locale-id.enum';

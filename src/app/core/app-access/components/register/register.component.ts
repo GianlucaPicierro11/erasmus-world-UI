@@ -7,12 +7,12 @@ import { NationalityModel } from 'app/core/app-access/models/nationality.model';
 import { SignupRequestModel } from 'app/core/app-access/models/signup-request.model';
 import { UniversityModel } from 'app/core/app-access/models/university.model';
 import { AuthHttpService } from 'app/core/app-access/services/auth-http/auth-http.service';
-import { SnackbarService } from 'app/core/app-access/services/snackbar/snackbar.service';
-import { TypologicalService } from 'app/core/app-access/services/typological/typological.service';
+import { SnackbarService } from 'app/shared/services/snackbar/snackbar.service';
+import { TypologicalService } from '@core/app-access/services/typological-http/typological.service';
 import { BehaviorSubject, debounceTime, finalize, map, Observable, startWith, switchMap, tap } from 'rxjs';
 import * as moment from 'moment';
 import { environment } from '@env/environment';
-import { LocaleLanguageService } from '@core/app-access/services/locale-language/locale-language.service';
+import { LocaleLanguageService } from 'app/shared/services/locale-language/locale-language.service';
 import { LanguageLocaleIdEnum } from 'app/shared/enumerations/language-locale-id.enum';
 
 @Component({
@@ -22,7 +22,7 @@ import { LanguageLocaleIdEnum } from 'app/shared/enumerations/language-locale-id
 })
 export class RegisterComponent implements OnInit {
   form: FormGroup;
-  hide = true;
+  hidePassword = true;
   hideMatchPassword = true;
   startDate = new Date(1990, 0, 1);
   isLoadingUniversities = false;
@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
       esnSectionSearch: new FormControl(""),
       esnSection: new FormControl(null, [Validators.required]),
       nrEsnCard: new FormControl(''),
-      password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.maxLength(120)]),
+      'password': new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.maxLength(120)]),
       'match-password': new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}'), Validators.maxLength(120)]),
     }, { validators: this.checkPasswords });
   }
@@ -58,6 +58,7 @@ export class RegisterComponent implements OnInit {
   checkPasswords: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
     let pass = group.get('password')?.value;
     let confirmPass = group.get('match-password')?.value
+
     return pass === confirmPass ? null : { notSame: true }
   }
 
@@ -124,6 +125,8 @@ export class RegisterComponent implements OnInit {
   }
 
   getPasswordErrorMessage() {
+    console.log('password', this.form.get('password')?.value)
+    console.log('match-password', this.form.get('match-password')?.value)
     if (this.form.get('password')?.hasError('required')) {
       return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Campo obbligatorio' : 'You must enter a value';
     }
@@ -140,6 +143,8 @@ export class RegisterComponent implements OnInit {
   }
 
   getMatchPasswordErrorMessage() {
+    console.log('password', this.form.get('password')?.value)
+    console.log('match-password', this.form.get('match-password')?.value)
     if (this.form.get('match-password')?.hasError('required')) {
       return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Campo obbligatorio' : 'You must enter a value';
     }
@@ -230,6 +235,9 @@ export class RegisterComponent implements OnInit {
   }
 
   register(): void {
+    console.log('password', this.form.get("password")?.value)
+    console.log('match-password', this.form.get("match-password")?.value)
+
     let signupRequest: SignupRequestModel = {
       name: this.form.get("name")?.value,
       surname: this.form.get("surname")?.value,
@@ -246,15 +254,14 @@ export class RegisterComponent implements OnInit {
     this.authService.register(signupRequest).subscribe({
       next: (data) => {
         if (data) {
-          this.snackbarService.openSuccessSnackBar("Registered successfully, please check your email and confirm your account", "Ti sei registrato correttamente, per favore controlla la tua e-mail per confermare il tuo account")
-          this.router.navigateByUrl(RoutesEnum.LOGIN);
+          this.snackbarService.openSuccessSnackBar("Registered successfully, please check your email and confirm your account", "Ti sei registrato correttamente, per favore controlla la tua e-mail per confermare il tuo account");
+          this.router.navigateByUrl(RoutesEnum.RESEND_EMAIL_VERIFICATION.replace(':email', signupRequest.email));
         }
       },
       error: (e) => {
-        this.snackbarService.openErrorSnackBar(e.error.error, e.error.error)
+        this.snackbarService.openErrorSnackBar(e.error.error, e.error.error);
       },
       complete: () => {
-        this.router.navigateByUrl(RoutesEnum.LOGIN);
       }
     });
   }

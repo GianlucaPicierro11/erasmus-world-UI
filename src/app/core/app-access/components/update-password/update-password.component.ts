@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NewPasswordRequestModel } from '@core/app-access/models/new-password-request.model';
-import { LocaleLanguageService } from '@core/app-access/services/locale-language/locale-language.service';
+import { LocaleLanguageService } from 'app/shared/services/locale-language/locale-language.service';
 import { environment } from '@env/environment';
 import { AuthHttpService } from 'app/core/app-access/services/auth-http/auth-http.service';
-import { SnackbarService } from 'app/core/app-access/services/snackbar/snackbar.service';
+import { SnackbarService } from 'app/shared/services/snackbar/snackbar.service';
 import { LanguageLocaleIdEnum } from 'app/shared/enumerations/language-locale-id.enum';
 import { RoutesEnum } from 'app/shared/enumerations/routes.enum';
 

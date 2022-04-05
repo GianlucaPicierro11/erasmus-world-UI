@@ -1,0 +1,11 @@
+<div fxLayout="row" class="snack-container">
+    <mat-icon
+        [ngClass]="{'success-color': isSuccessSnackBar(),'error-color': isErrorSnackBar(),'info-color': isInfoSnackBar(),'warn-color': isWarnSnackBar()}">
+        {{data.icon}}</mat-icon>
+    <div>
+        <span>{{data.message}}</span>
+    </div>
+    <button mat-icon-button (click)="snackBarRef.dismiss()">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>

@@ -23,13 +23,15 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatListModule } from '@angular/material/list';
 import { FlagsLanguageSelectComponent } from './components/flags-language-select/flags-language-select.component';
+import { IconSnackbarComponent } from './components/icon-snackbar/icon-snackbar.component';
 
 @NgModule({
   declarations: [
     SpinnerComponent,
     UnauthorizedPageComponent,
     PageNotFoundComponent,
-    FlagsLanguageSelectComponent
+    FlagsLanguageSelectComponent,
+    IconSnackbarComponent
   ],
   imports: [
     MatProgressSpinnerModule,
@@ -79,7 +81,8 @@ import { FlagsLanguageSelectComponent } from './components/flags-language-select
     SpinnerComponent,
     UnauthorizedPageComponent,
     PageNotFoundComponent,
-    FlagsLanguageSelectComponent
+    FlagsLanguageSelectComponent,
+    IconSnackbarComponent
   ]
 })
 

@@ -2,6 +2,7 @@ export enum RoutesEnum {
     HOME = 'home',
     LOGIN = 'login',
     REGISTER = 'register',
+    RESEND_EMAIL_VERIFICATION = 'resend-email-verification/:email',
     CONFIRM_REGISTRATION = 'confirm/:user/:token',
     FORGOT_PASSWORD = 'forgot-password',
     UPDATE_PASSWORD = 'update-password/:user/:token',

@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { RoutesEnum } from 'app/shared/enumerations/routes.enum';
 import { LoginModel } from 'app/core/app-access/models/login-request.model';
 import { AuthHttpService } from 'app/core/app-access/services/auth-http/auth-http.service';
-import { LoginSharedService } from 'app/core/app-access/services/login-shared/login-shared.service';
-import { SnackbarService } from 'app/core/app-access/services/snackbar/snackbar.service';
+import { LoginSharedService } from 'app/shared/services/login-shared/login-shared.service';
+import { SnackbarService } from 'app/shared/services/snackbar/snackbar.service';
 import { TokenStorageService } from 'app/core/app-access/services/token-storage/token-storage.service';
 import { environment } from '@env/environment';
 
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
-      this.snackbarService.openInfoSnackWarn("You are already logged in", "Sei già loggato");
+      this.snackbarService.openWarnSnackBar("You are already logged in", "Sei già loggato");
       this.router.navigateByUrl(RoutesEnum.HOME);
     }
   }

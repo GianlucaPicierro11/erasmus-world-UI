@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '@env/environment';
 import { RoutesEnum } from 'app/shared/enumerations/routes.enum';
-import { LocaleLanguageService } from 'app/core/app-access/services/locale-language/locale-language.service';
-import { LoginSharedService } from 'app/core/app-access/services/login-shared/login-shared.service';
+import { LocaleLanguageService } from 'app/shared/services/locale-language/locale-language.service';
+import { LoginSharedService } from 'app/shared/services/login-shared/login-shared.service';
 import { TokenStorageService } from 'app/core/app-access/services/token-storage/token-storage.service';
 
 @Component({

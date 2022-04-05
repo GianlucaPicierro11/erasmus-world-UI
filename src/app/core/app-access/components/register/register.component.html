@@ -156,31 +156,15 @@
                                 <input matInput #nrEsnCard formControlName="nrEsnCard">
                             </mat-form-field>
                         </div>
-                        <div class="col" fxHide.lt-sm="true">
-                            <mat-form-field appearance="outline" class="full-width">
-                                <mat-label i18n="Password *|password *@@password*">Password *</mat-label>
-                                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password"
-                                    autocomplete="new-password" maxlength="120">
-                                <button mat-icon-button matSuffix [attr.aria-label]="'Info'">
-                                    <mat-icon>info</mat-icon>
-                                </button>
-                                <button mat-icon-button matSuffix (click)="hide = !hide"
-                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                                </button>
-                                <mat-error *ngIf="form.get('password')?.invalid">{{getPasswordErrorMessage()}}
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
                     </div>
-                    <div class="row" fxHide fxShow.lt-sm="true">
+                    <div class="row">
                         <div class="col">
                             <mat-form-field appearance="outline" class="full-width">
                                 <mat-label i18n="Password *|password *@@password*">Password *</mat-label>
-                                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password"
+                                <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password"
                                     autocomplete="new-password" maxlength="120">
                                 <button mat-icon-button matSuffix [attr.aria-label]="'Info'" [matMenuTriggerFor]="info"
-                                    #infoTrigger>
+                                    #infoTrigger class="changeCursor">
                                     <mat-icon>info</mat-icon>
                                 </button>
                                 <mat-menu #info="matMenu">
@@ -199,9 +183,9 @@
                                         </div>
                                     </div>
                                 </mat-menu>
-                                <button mat-icon-button matSuffix (click)="hide = !hide"
-                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
+                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+                                    <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
                                 </button>
                                 <mat-error *ngIf="form.get('password')?.invalid">{{getPasswordErrorMessage()}}
                                 </mat-error>

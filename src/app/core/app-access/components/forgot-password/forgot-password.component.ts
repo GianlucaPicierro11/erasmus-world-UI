@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthHttpService } from '@core/app-access/services/auth-http/auth-http.service';
-import { SnackbarService } from '@core/app-access/services/snackbar/snackbar.service';
+import { SnackbarService } from 'app/shared/services/snackbar/snackbar.service';
 import { environment } from '@env/environment';
 import { RoutesEnum } from 'app/shared/enumerations/routes.enum';
 

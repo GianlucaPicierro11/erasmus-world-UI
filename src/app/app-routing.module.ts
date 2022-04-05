@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CookiesPolicyComponent } from '@core/app-access/components/cookies-policy/cookies-policy.component';
 import { DataPolicyComponent } from '@core/app-access/components/data-policy/data-policy.component';
 import { ForgotPasswordComponent } from '@core/app-access/components/forgot-password/forgot-password.component';
+import { ResendEmailVerificationComponent } from '@core/app-access/components/resend-email-verification/resend-email-verification.component';
 import { TermOfUseComponent } from '@core/app-access/components/term-of-use/term-of-use.component';
 import { UpdatePasswordComponent } from '@core/app-access/components/update-password/update-password.component';
 import { ConfirmRegistrationComponent } from './core/app-access/components/confirm-registration/confirm-registration.component';
@@ -26,6 +27,7 @@ const appRoutes: Routes = [
       { path: RoutesEnum.HOME, component: HomeComponent },
       { path: RoutesEnum.LOGIN, component: LoginComponent },
       { path: RoutesEnum.REGISTER, component: RegisterComponent },
+      { path: RoutesEnum.RESEND_EMAIL_VERIFICATION, component: ResendEmailVerificationComponent },
       { path: RoutesEnum.CONFIRM_REGISTRATION, component: ConfirmRegistrationComponent },
       { path: RoutesEnum.FORGOT_PASSWORD, component: ForgotPasswordComponent },
       { path: RoutesEnum.UPDATE_PASSWORD, component: UpdatePasswordComponent },

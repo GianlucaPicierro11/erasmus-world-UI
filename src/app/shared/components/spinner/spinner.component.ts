@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ErrorSharedService } from 'app/core/app-access/services/error-shared/error-shared.service';
+import { ErrorSharedService } from 'app/shared/services/error-shared/error-shared.service';
 import { SpinnerSharedService } from 'app/core/app-access/services/spinner-shared/spinner-shared.service';
 import { Subject } from 'rxjs';
 

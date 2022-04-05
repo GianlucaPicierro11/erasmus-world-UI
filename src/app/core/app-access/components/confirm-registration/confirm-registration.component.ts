@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RoutesEnum } from 'app/shared/enumerations/routes.enum';
 import { AuthHttpService } from 'app/core/app-access/services/auth-http/auth-http.service';
-import { SnackbarService } from 'app/core/app-access/services/snackbar/snackbar.service';
+import { SnackbarService } from 'app/shared/services/snackbar/snackbar.service';
 import { BehaviorSubject, Subject } from 'rxjs';
 
 @Component({
