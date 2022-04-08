@@ -1,8 +1,5 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LOCALE_ID, NgModule } from '@angular/core';
-
-import { SpinnerSharedService } from './core/app-access/services/spinner-shared/spinner-shared.service';
-import { SpinnerInterceptor } from './interceptors/spinner/spinner.interceptor';
 import { AuthInterceptor } from './interceptors/auth/auth.interceptor';
 import { LocaleLanguageService } from './shared/services/locale-language/locale-language.service';
 import { AppComponent } from './app-component/app.component';
@@ -13,6 +10,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconSnackbarComponent } from './shared/components/icon-snackbar/icon-snackbar.component';
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import {
+  GoogleLoginProvider,
+  FacebookLoginProvider
+} from 'angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -24,12 +26,12 @@ import { IconSnackbarComponent } from './shared/components/icon-snackbar/icon-sn
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
+    SocialLoginModule
   ],
   entryComponents: [
     IconSnackbarComponent
   ],
-  providers: [SpinnerSharedService,
-    { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true },
+  providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     {
       provide: MAT_DATE_LOCALE,
@@ -44,6 +46,21 @@ import { IconSnackbarComponent } from './shared/components/icon-snackbar/icon-sn
         return localeService.getLanguage();
       },
       deps: [LocaleLanguageService]
+    },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('361107942444781')
+          }
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
     }],
   bootstrap: [AppComponent]
 })

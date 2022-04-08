@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TypologicalService } from './typological.service';
+import { TypologicalHttpService } from './typological-http.service';
 
 describe('TypologicalService', () => {
-  let service: TypologicalService;
+  let service: TypologicalHttpService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(TypologicalService);
+    service = TestBed.inject(TypologicalHttpService);
   });
 
   it('should be created', () => {

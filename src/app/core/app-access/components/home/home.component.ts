@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { RoutesEnum } from 'app/shared/enumerations/routes.enum';
 import { UserModel } from 'app/core/app-access/models/user.model';
 import { AuthHttpService } from 'app/core/app-access/services/auth-http/auth-http.service';
-import { TokenStorageService } from 'app/core/app-access/services/token-storage/token-storage.service';
+import { TokenStorageService } from 'app/shared/services/token-storage/token-storage.service';
 import { Observable } from 'rxjs';
 import { environment } from '@env/environment';
 

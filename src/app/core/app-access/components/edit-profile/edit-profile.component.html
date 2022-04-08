@@ -1,1 +1,152 @@
-<p>edit-profile works!</p>
+<div class="row padding-top-18 full-height align-items-center justify-content-center">
+    <div class="col-10 align-self-center">
+        <form [formGroup]="form">
+            <div class="row">
+                <div class="col">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label i18n="Name *|name *@@name*">Name *</mat-label>
+                        <input matInput #name formControlName="name" autocomplete="given-name" maxlength="20">
+                        <mat-error *ngIf="form.get('name')?.invalid">{{getNameErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col" fxShow fxHide.lt-sm="true">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label i18n="Surname *|surname *@@surname*">Surname *</mat-label>
+                        <input matInput #surname formControlName="surname" autocomplete="family-name" maxlength="20">
+                        <mat-error *ngIf="form.get('surname')?.invalid">{{getSurnameErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row" fxHide fxShow.lt-sm="true">
+                <div class="col">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label i18n="Surname *|surname *@@surname*">Surname *</mat-label>
+                        <input matInput #surname formControlName="surname" autocomplete="family-name" maxlength="20">
+                        <mat-error *ngIf="form.get('surname')?.invalid">{{getSurnameErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label i18n="Email *|email *@@email*">E-mail *</mat-label>
+                        <input matInput #email formControlName="email" autocomplete="email" maxlength="50">
+                        <mat-error *ngIf="form.get('email')?.invalid">{{getEmailErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col" fxShow fxHide.lt-sm="true">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label i18n="Phone *|phone *@@phone*">Phone *</mat-label>
+                        <input matInput #phone formControlName="phone" autocomplete="tel" maxlength="20">
+                        <mat-error *ngIf="form.get('phone')?.invalid">{{getPhoneErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row" fxHide fxShow.lt-sm="true">
+                <div class="col">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label i18n="Phone *|phone *@@phone*">Phone *</mat-label>
+                        <input matInput #phone formControlName="phone" autocomplete="tel" maxlength="20">
+                        <mat-error *ngIf="form.get('phone')?.invalid">{{getPhoneErrorMessage()}}</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label i18n="Birthdate *|birthdate *@@birthdate*">Birthdate *</mat-label>
+                        <input matInput [matDatepicker]="birthDate" formControlName="birthDate" autocomplete="bday">
+                        <mat-error *ngIf="form.get('birthDate')?.invalid">{{getBirthDateErrorMessage()}}
+                        </mat-error>
+                        <mat-datepicker-toggle matSuffix [for]="birthDate"></mat-datepicker-toggle>
+                        <mat-datepicker #birthDate startView="year" [startAt]="startDate"></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="col" fxShow fxHide.lt-sm="true">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n="Nationality *|nationality *@@nationality*">Nationality *</mat-label>
+                        <mat-select formControlName="nationality" [compareWith]="attributeDisplay">
+                            <mat-option disabled>
+                                <input matInput #nationalitySearch formControlName="nationalitySearch"
+                                    placeholder="Search">
+                            </mat-option>
+                            <mat-option #nationality *ngFor="let nationality of filteredNationalities | async"
+                                [value]="nationality">
+                                {{nationality.nationality}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row" fxHide fxShow.lt-sm="true">
+                <div class="col">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n="Nationality *|nationality *@@nationality*">Nationality *</mat-label>
+                        <mat-select formControlName="nationality" [compareWith]="attributeDisplay">
+                            <mat-option disabled><input matInput #nationalitySearch formControlName="nationalitySearch"
+                                    placeholder="Search"></mat-option>
+                            <mat-option #nationality *ngFor="let nationality of filteredNationalities | async"
+                                [value]="nationality">
+                                {{nationality.nationality}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n="Student At *|student At *@@studentAt*">Student At *</mat-label>
+                        <mat-select formControlName="university" [compareWith]="attributeDisplay">
+                            <mat-option disabled><input matInput #universitySearch formControlName="universitySearch"
+                                    placeholder="Search"></mat-option>
+                            <mat-option #university *ngFor="let university of filteredUniversities"
+                                [value]="university">
+                                {{university.university}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col" fxHide.lt-sm="true">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n="ESN Section *|ESN Section *@@esnSection*">ESN Section *</mat-label>
+                        <mat-select formControlName="esnSection" [compareWith]="attributeDisplay">
+                            <mat-option disabled><input matInput #esnSectionSearch formControlName="esnSectionSearch"
+                                    placeholder="Search"></mat-option>
+                            <mat-option #esnSection *ngFor="let esnSection of filteredEsnSections | async"
+                                [value]="esnSection">
+                                {{esnSection.section}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row" fxHide fxShow.lt-sm="true">
+                <div class="col">
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label i18n="ESN Section *|ESN Section *@@esnSection*">ESN Section *</mat-label>
+                        <mat-select formControlName="esnSection" [compareWith]="attributeDisplay">
+                            <mat-option disabled><input matInput #esnSectionSearch formControlName="esnSectionSearch"
+                                    placeholder="Search"></mat-option>
+                            <mat-option #esnSection *ngFor="let esnSection of filteredEsnSections | async"
+                                [value]="esnSection">
+                                {{esnSection.section}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field appearance="outline" class="full-width">
+                        <mat-label i18n="Nr ESN Card|Nr ESN Card@@nrEsnCard">Nr ESN Card</mat-label>
+                        <input matInput #nrEsnCard formControlName="nrEsnCard">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row padding-bottom-18">
+                <div class="col">
+                    <button mat-raised-button color="primary" class="full-width" (click)="save()"
+                        [disabled]="this.form.invalid" ii18n="Save|Save button@@save">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

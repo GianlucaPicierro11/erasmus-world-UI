@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 
-import { SpinnerComponent } from './components/spinner/spinner.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -27,7 +26,6 @@ import { IconSnackbarComponent } from './components/icon-snackbar/icon-snackbar.
 
 @NgModule({
   declarations: [
-    SpinnerComponent,
     UnauthorizedPageComponent,
     PageNotFoundComponent,
     FlagsLanguageSelectComponent,
@@ -78,7 +76,6 @@ import { IconSnackbarComponent } from './components/icon-snackbar/icon-snackbar.
     MatTooltipModule,
     MatListModule,
     //declarations
-    SpinnerComponent,
     UnauthorizedPageComponent,
     PageNotFoundComponent,
     FlagsLanguageSelectComponent,

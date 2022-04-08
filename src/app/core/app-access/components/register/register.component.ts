@@ -8,7 +8,7 @@ import { SignupRequestModel } from 'app/core/app-access/models/signup-request.mo
 import { UniversityModel } from 'app/core/app-access/models/university.model';
 import { AuthHttpService } from 'app/core/app-access/services/auth-http/auth-http.service';
 import { SnackbarService } from 'app/shared/services/snackbar/snackbar.service';
-import { TypologicalService } from '@core/app-access/services/typological-http/typological.service';
+import { TypologicalHttpService } from 'app/shared/services/typological-http/typological-http.service';
 import { BehaviorSubject, debounceTime, finalize, map, Observable, startWith, switchMap, tap } from 'rxjs';
 import * as moment from 'moment';
 import { environment } from '@env/environment';
@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
   filteredEsnSections: Observable<EsnSectionModel[]> | undefined;
 
   constructor(private authService: AuthHttpService, private fb: FormBuilder, private snackbarService: SnackbarService,
-    private typologicalService: TypologicalService, private router: Router, private localeLanguageService: LocaleLanguageService) {
+    private typologicalService: TypologicalHttpService, private router: Router, private localeLanguageService: LocaleLanguageService) {
     this.form = fb.group({
       name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
       surname: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
@@ -235,9 +235,6 @@ export class RegisterComponent implements OnInit {
   }
 
   register(): void {
-    console.log('password', this.form.get("password")?.value)
-    console.log('match-password', this.form.get("match-password")?.value)
-
     let signupRequest: SignupRequestModel = {
       name: this.form.get("name")?.value,
       surname: this.form.get("surname")?.value,

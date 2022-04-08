@@ -51,4 +51,8 @@ export class AuthHttpService {
   saveNewPassword(newPasswordRequest: NewPasswordRequestModel): Observable<JwtResponseModel> {
     return this.http.post<JwtResponseModel>(environment.AUTH_API + 'save-new-password', newPasswordRequest, httpOptions);
   }
+
+  loginWithFb(socialUser: any): Observable<JwtResponseModel> {
+    return this.http.post<JwtResponseModel>(environment.AUTH_API + 'login/facebook', socialUser, httpOptions);
+  }
 }

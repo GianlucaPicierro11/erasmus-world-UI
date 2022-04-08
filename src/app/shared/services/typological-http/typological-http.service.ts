@@ -10,7 +10,7 @@ const TYPOLOGICAL_URL_API = environment.BASE_URL_API + 'typological';
 @Injectable({
   providedIn: 'root'
 })
-export class TypologicalService {
+export class TypologicalHttpService {
 
   constructor(private http: HttpClient) { }
 

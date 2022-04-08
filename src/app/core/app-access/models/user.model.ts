@@ -1,3 +1,6 @@
+import { EsnSectionModel } from "./esnsection.model";
+import { NationalityModel } from "./nationality.model";
+import { UniversityModel } from "./university.model";
 
 export interface UserModel {
     email: string;
@@ -5,9 +8,9 @@ export interface UserModel {
     name: string;
     surname: string;
     birthDate: Date;
-    nationality: string;
-    university: string;
-    esnSection: string;
+    nationality: NationalityModel;
+    university: UniversityModel;
+    esnSection: EsnSectionModel;
     esnCard: string;
     expiryDate: Date;
 }

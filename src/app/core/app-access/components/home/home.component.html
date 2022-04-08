@@ -41,7 +41,7 @@
                     </div>
                     <div class="row">
                         <div class="col-6 text-left padding-0 text-background-card">
-                            <span *ngIf="this.user$ |async ; let user">{{user.nationality}}</span>
+                            <span *ngIf="this.user$ |async ; let user">{{user.nationality.nationality}}</span>
                         </div>
                         <div class="col-5 offset-1 text-left padding-0 text-background-card">
                             <span *ngIf="this.user$ |async ; let user">{{user.birthDate | date: 'dd/MM/yyyy'}}</span>
@@ -54,7 +54,7 @@
                     </div>
                     <div class="row" fxShow fxHide.lt-sm="true">
                         <div class="col text-left padding-0 text-background-card">
-                            <span *ngIf="this.user$ |async ; let user">{{user.university}}</span>
+                            <span *ngIf="this.user$ |async ; let user">{{user.university.university}}</span>
                         </div>
                     </div>
                     <div class="row">
@@ -67,7 +67,7 @@
                     </div>
                     <div class="row">
                         <div class="col-6 text-left padding-0 text-background-card">
-                            <span *ngIf="this.user$ |async ; let user">{{user.esnSection}}</span>
+                            <span *ngIf="this.user$ |async ; let user">{{user.esnSection.section}}</span>
                         </div>
                         <div class="col-5 offset-1 text-left padding-0 text-background-card">
                             <span *ngIf="this.user$ |async ; let user">{{user.expiryDate | date: 'dd/MM/yyyy'}}</span>
