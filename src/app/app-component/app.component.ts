@@ -18,7 +18,7 @@ import { SocialAuthService } from "angularx-social-login";
 
 export class AppComponent implements OnInit {
 
-  logoPath: string = environment.BASE_URL_UI + 'assets/images/ESN_short-logo-Satellite.png';
+  logoPath: string = environment.BASE_URL_UI + 'assets/images/ME_full_black.png';
   username?: string;
 
   constructor(private tokenStorageService: TokenStorageService, private router: Router,

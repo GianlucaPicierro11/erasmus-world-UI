@@ -9,9 +9,9 @@
                 <button mat-menu-item>Test2</button>
             </mat-menu>
             <span class="toolbar-spacer"></span>
-            <img class="short-logo-img" alt="esn-logo" src="{{logoPath}}">
-            <span class="changeCursor" fxShow fxHide.lt-sm="true" (click)="goToHomePage()">Erasmus World App</span>
-            <span class="changeCursor" fxHide fxShow.lt-sm="true" (click)="goToHomePage()">EWA</span>
+            <button mat-button (click)="goToHomePage()">
+                <img class="long-logo-img" alt="me-logo" src="{{logoPath}}">
+            </button>
             <span class="toolbar-spacer"></span>
             <app-flags-language-select></app-flags-language-select>
             <button mat-icon-button aria-label="Example icon button with a vertical three dot icon"

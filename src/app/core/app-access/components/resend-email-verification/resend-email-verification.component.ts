@@ -9,7 +9,7 @@ import { environment } from '@env/environment';
 })
 export class ResendEmailVerificationComponent implements OnInit {
 
-  logoPath: string = environment.BASE_URL_UI + 'assets/images/ESN_full-logo-Satellite.png';
+  logoPath: string = environment.BASE_URL_UI + 'assets/images/ME_full.png';
   email: string | null;
 
   constructor(private route: ActivatedRoute) {

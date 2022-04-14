@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   hidePassword = true;
   form: FormGroup;
-  logoPath: string = environment.BASE_URL_UI + 'assets/images/ESN_full-logo-Satellite.png';
+  logoPath: string = environment.BASE_URL_UI + 'assets/images/ME_full.png';
 
   constructor(private authHttpService: AuthHttpService, private tokenStorage: TokenStorageService,
     private fb: FormBuilder, private router: Router, private loginSharedService: LoginSharedService, private snackbarService: SnackbarService,

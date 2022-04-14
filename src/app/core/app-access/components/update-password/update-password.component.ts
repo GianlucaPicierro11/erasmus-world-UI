@@ -16,7 +16,7 @@ import { RoutesEnum } from 'app/shared/enumerations/routes.enum';
 })
 export class UpdatePasswordComponent implements OnInit {
 
-  logoPath: string = environment.BASE_URL_UI + 'assets/images/ESN_full-logo-Satellite.png';
+  logoPath: string = environment.BASE_URL_UI + 'assets/images/ME_full.png';
   hideNewPassword = true;
   hideMatchPassword = true;
   user!: string | null;

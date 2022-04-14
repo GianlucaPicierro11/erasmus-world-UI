@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
   hideMatchPassword = true;
   startDate = new Date(1990, 0, 1);
   isLoadingUniversities = false;
-  logoPath: string = environment.BASE_URL_UI + 'assets/images/ESN_full-logo-Satellite.png';
+  logoPath: string = environment.BASE_URL_UI + 'assets/images/ME_full.png';
 
   nationalities: NationalityModel[] = [];
   filteredNationalities: Observable<NationalityModel[]> | undefined;
