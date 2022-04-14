@@ -10,11 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconSnackbarComponent } from './shared/components/icon-snackbar/icon-snackbar.component';
-import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
-import {
-  GoogleLoginProvider,
-  FacebookLoginProvider
-} from 'angularx-social-login';
+import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -26,7 +22,7 @@ import {
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    SocialLoginModule
+    SocialLoginModule,
   ],
   entryComponents: [
     IconSnackbarComponent

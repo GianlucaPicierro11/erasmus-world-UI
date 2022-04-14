@@ -26,7 +26,9 @@ export class HomeComponent implements OnInit {
     if (!this.isLoggedIn) {
       this.router.navigateByUrl(RoutesEnum.LOGIN);
     } else {
-      this.user$ = this.authService.getUserInfo(this.tokenStorageService.getUser()?.email, this.tokenStorageService.getToken());
+      this.user$ = this.authService.getUserInfo(
+        this.tokenStorageService.getUser()?.email,
+        this.tokenStorageService.getToken());
     }
   }
 

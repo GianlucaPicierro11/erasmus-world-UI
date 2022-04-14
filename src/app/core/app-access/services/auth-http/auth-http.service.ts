@@ -10,6 +10,7 @@ import { NewPasswordRequestModel } from '@core/app-access/models/new-password-re
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  //, withCredentials: true
 };
 
 @Injectable({
@@ -35,7 +36,7 @@ export class AuthHttpService {
     return this.http.get(environment.AUTH_API + 'signin/confirm', { params });
   }
 
-  getUserInfo(user: string | undefined, token: string | null): Observable<UserModel> {
+  getUserInfo(user: string | null | undefined, token: string | null): Observable<UserModel> {
     let params;
     if (user != null && token != null) {
       params = new HttpParams().set("user", user);

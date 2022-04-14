@@ -15,7 +15,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { UnauthorizedPageComponent } from './components/unauthorized-page/unauthorized-page.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -35,6 +35,7 @@ import { IconSnackbarComponent } from './components/icon-snackbar/icon-snackbar.
     MatProgressSpinnerModule,
     FormsModule,
     HttpClientModule,
+    HttpClientXsrfModule.withOptions({ cookieName: 'XSRF-TOKEN' }),
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
@@ -58,6 +59,7 @@ import { IconSnackbarComponent } from './components/icon-snackbar/icon-snackbar.
     MatProgressSpinnerModule,
     FormsModule,
     HttpClientModule,
+    HttpClientXsrfModule,
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
