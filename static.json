@@ -1,4 +1,7 @@
 {
+    "https_only": true,
+    "root": "dist/erasmus-world-ui",
+    "clean_urls": true,
     "headers": {
         "/**": {
             "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; frame-ancestors 'none'; connect-src 'self' https://erasmus-world-ui.herokuapp.com",
@@ -10,5 +13,15 @@
             "Feature-Policy": "accelerometer 'none'; camera 'none'; microphone 'none'"
         }
     },
-    "https_only": true
+    "routes": {
+        "/en/*": "/en/",
+        "/it/*": "/it/",
+        "/assets/*": "/assets/",
+        "/**": "index.html"
+    },
+    "redirects": {
+        "/**": {
+            "url": "/en"
+        }
+    }
 }
