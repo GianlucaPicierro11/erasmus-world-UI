@@ -11,7 +11,7 @@
         }
     },
     "https_only": true,
-    "root": "dist/erasmus-world-ui/en/notes/",
+    "root": "dist/erasmus-world-ui/en/",
     "routes": {
         "/**": "index.html"
     }
