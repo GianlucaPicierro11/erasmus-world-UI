@@ -4,7 +4,7 @@
     "clean_urls": true,
     "headers": {
         "/**": {
-            "Content-Security-Policy": "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://stackpath.bootstrapcdn.com https://connect.facebook.net ; style-src 'self' 'unsafe-inline' 'unsafe-eval' fonts.googleapis.com https://stackpath.bootstrapcdn.com; object-src 'none';img-src 'self' data: blob:;font-src 'self' data: fonts.googleapis.com ;",
+            "Content-Security-Policy": "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://stackpath.bootstrapcdn.com https://connect.facebook.net ; style-src 'self' 'unsafe-inline' 'unsafe-eval' fonts.googleapis.com https://stackpath.bootstrapcdn.com; object-src 'none';img-src 'self' https://www.facebook.com data: blob:;font-src 'self' https://fonts.gstatic.com ;",
             "Referrer-Policy": "no-referrer, strict-origin-when-cross-origin",
             "Strict-Transport-Security": "max-age=63072000; includeSubDomains",
             "X-Content-Type-Options": "nosniff",
