@@ -10,6 +10,5 @@
             "Feature-Policy": "accelerometer 'none'; camera 'none'; microphone 'none'"
         }
     },
-    "https_only": true,
-    "root": ""
+    "https_only": true
 }
