@@ -3,14 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng server",
+    "start": "node server",
     "start-local": "concurrently \"ng build --watch=true\" \"ng serve --port 4200\" ",
     "build": "ng build --configuration=production",
+    "heroku-postbuild": "ng build --configuration=production",
     "i18n": "ng extract-i18n",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "test": "ng test"
   },
   "private": true,
   "engines": {
