@@ -13,13 +13,13 @@
             "Feature-Policy": "accelerometer 'none'; camera 'none'; microphone 'none'"
         }
     },
-    "routes": {
-        "/en/*": "/en/",
-        "/it/*": "/it/"
-    },
     "redirects": {
         "*": {
             "url": "/en"
         }
+    },
+    "routes": {
+        "/en/*": "/en/",
+        "/it/*": "/it/"
     }
 }
