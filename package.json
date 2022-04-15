@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server",
+    "start": "node server.js",
     "start-local": "concurrently \"ng build --watch=true\" \"ng serve --port 4200\" ",
     "build": "ng build --configuration=production",
     "i18n": "ng extract-i18n",
