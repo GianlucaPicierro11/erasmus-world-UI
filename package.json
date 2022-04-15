@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "node server",
     "start-local": "concurrently \"ng build --watch=true\" \"ng serve --port 4200\" ",
-    "build": "ng build",
+    "build": "ng build --configuration=production",
     "heroku-postbuild": "ng build --configuration=production",
     "i18n": "ng extract-i18n",
     "watch": "ng build --watch --configuration development",
