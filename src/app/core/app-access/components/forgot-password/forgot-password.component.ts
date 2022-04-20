@@ -14,6 +14,7 @@ import { RoutesEnum } from 'app/shared/enumerations/routes.enum';
 export class ForgotPasswordComponent implements OnInit {
   form: FormGroup;
   logoPath: string = environment.BASE_URL_UI + 'assets/images/ME_full.png';
+  isSendingLoginLink = false;
 
   constructor(private fb: FormBuilder, private authService: AuthHttpService, private snackbarService: SnackbarService, private router: Router) {
     this.form = fb.group({
@@ -34,8 +35,8 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   resetPassword() {
+    this.isSendingLoginLink = true;
     let email: string = this.form.get("email")?.value;
-    console.log(email)
     this.authService.resetPassword(email).subscribe({
       next: (confirmation) => {
         if (confirmation) {
@@ -43,11 +44,12 @@ export class ForgotPasswordComponent implements OnInit {
         }
       },
       error: (e) => {
-        this.snackbarService.openErrorSnackBar(e.error.error, e.error.error)
+        this.snackbarService.openErrorSnackBar(e.error.error, e.error.error);
+        this.isSendingLoginLink = false;
       },
       complete: () => {
+        this.isSendingLoginLink = false;
       }
     });
-
   }
 }

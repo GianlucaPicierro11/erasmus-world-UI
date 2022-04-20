@@ -27,6 +27,14 @@ export class AuthHttpService {
     return this.http.post(environment.AUTH_API + 'signup', signupRequest, httpOptions);
   }
 
+  resendConfirmationEmail(user: string | null): Observable<any> {
+    let params;
+    if (user != null) {
+      params = new HttpParams().set("user", user);
+    }
+    return this.http.get(environment.AUTH_API + 'resend-confirmation-email', { params });
+  }
+
   confirm(user: string | null, token: string | null) {
     let params;
     if (user != null && token != null) {

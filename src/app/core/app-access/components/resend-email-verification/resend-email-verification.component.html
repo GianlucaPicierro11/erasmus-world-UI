@@ -20,9 +20,11 @@
                 <mat-divider [inset]="true"></mat-divider>
                 <div class="row padding-top-18">
                     <div class="col text-center">
-                        <p i18n="I didn't get the email|I didn't get the email@@didntGetEmail">
-                            <a tabindex="0" (click)="resendConfirmEmail()"> I didn't get the email</a>
-                        </p>
+                        <button mat-raised-button loading-button color="primary" class="full-width"
+                            (click)="resendConfirmEmail()"
+                            i18n="I didn't get the email|I didn't get the email@@didntGetEmail"
+                            [isLoading]="isSendingNewEmail">I didn't get the email
+                        </button>
                     </div>
                 </div>
             </mat-card-content>

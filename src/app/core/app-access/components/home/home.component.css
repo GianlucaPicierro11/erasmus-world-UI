@@ -1,50 +1,50 @@
-.text-background-card{
+.text-background-card {
     background-color: #ccecff;
+    text-overflow: ellipsis;
+    /* Required for text-overflow to do anything */
+    white-space: nowrap;
+    overflow: hidden;
 }
+
+.line-height-10px {
+    line-height: 10px;
+}
+
 
 /* small screen */
 @media only screen and (max-width: 600px) {
     .card {
         transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
-        display: block;
-        position: relative;
         border-radius: 15px;
         box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
     }
-    
-    .left-card{
-        background-color: #3a99d1; 
-        max-height: 170px;
-        width: 100%;
+
+    .left-card {
+        background-color: #3a99d1;
         height: auto;
-        border-top-left-radius: 15px; 
-        border-bottom-left-radius: 15px; 
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
         color: white;
-        font-size:x-small;
+        font-size: x-small;
         text-align: left;
     }
 
-    .font-text-size{
-        font-size:xx-small;
+    .font-text-size {
+        font-size: xx-small;
     }
 
-    .img-card{
-        max-height: 120px; 
+    .img-card {
+        max-height: 120px;
         border-style: dashed;
     }
 
-    .width-card {
-        max-width: 500px;
-        max-height: 170px;
-    }   
-    
-    .font-icon-person{
-        font-size: 40px;
-    } 
-    
-    .size-box-logo{
-        max-width: 30px;
-        text-align: right!important;
+    .font-icon-person {
+        font-size: 85px;
+    }
+
+    .size-box-logo {
+        max-width: 40px;
+        text-align: right !important;
     }
 
 }
@@ -54,42 +54,40 @@
 
     .card {
         transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
-        display: block;
-        position: relative;
         border-radius: 15px;
         box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
     }
-    
-    .left-card{
-        background-color: #3a99d1; 
-        max-height: 300px;
-        width: 100%;
+
+    .left-card {
+        background-color: #3a99d1;
         height: auto;
-        border-top-left-radius: 15px; 
-        border-bottom-left-radius: 15px; 
+        min-height: 250px;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
         color: white;
-        font-size:x-small;
+        font-size: x-small;
         text-align: left;
     }
 
-    .font-text-size{
-        font-size:smaller;
+    .font-text-size {
+        font-size: smaller;
     }
-    .img-card{
-        max-height: 300px; 
+
+    .img-card {
         border-style: dashed;
     }
+
     .width-card {
         max-width: 500px;
         max-height: 300px;
-    }   
-    
-    .font-icon-person{
+    }
+
+    .font-icon-person {
         font-size: 130px;
-    } 
-    
-    .size-box-logo{
+    }
+
+    .size-box-logo {
         max-width: 70px;
-        text-align: right!important;
+        text-align: right !important;
     }
 }

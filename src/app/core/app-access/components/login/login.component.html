@@ -39,7 +39,8 @@
                     <mat-divider [inset]="true"></mat-divider>
                     <div class="row padding-top-18 padding-bottom-18">
                         <div class="col">
-                            <button mat-raised-button color="primary" class="full-width" (click)="signInWithFB()"
+                            <button mat-raised-button loading-button color="primary" class="full-width"
+                                (click)="signInWithFB()" [isLoading]="isLogginInWithFb"
                                 i18n="Login with Facebook|login with Facebook button@@loginWithFacebook">Login with
                                 Facebook</button>
                         </div>

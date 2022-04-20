@@ -264,6 +264,7 @@ export class RegisterComponent implements OnInit {
       },
       error: (e) => {
         this.snackbarService.openErrorSnackBar(e.error.error, e.error.error);
+        this.isRegistering = false;
       },
       complete: () => {
         this.isRegistering = false;

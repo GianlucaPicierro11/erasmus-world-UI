@@ -2,16 +2,36 @@
     <div class="col-10 align-self-center text-center">
         <mat-card>
             <mat-card-content>
+                <div class="row padding-top-18 padding-bottom-18">
+                    <div class="col text-center">
+                        <img class="full-logo-img" alt="esn-logo" src="{{logoPath}}">
+                    </div>
+                </div>
                 <h1 i18n="Confirm registration|confirm registration@@confirmRegistration">Confirm registration</h1>
                 <p *ngIf="confirmation | async"
-                    i18n="Registration confirmed|registration confirmed@@registrationConfirmed">
-                    Registration confirmed
+                    i18n="Registration confirmed, welcome onboard! Login to start your experience.|registration confirmed, welcome onboard@@registrationConfirmed">
+                    Registration confirmed, welcome onboard! <a (click)="goToLogin()">Login</a> to start your
+                    experience.
                 </p>
                 <p [hidden]="confirmation | async"
-                    i18n=" Maybe your confirmation token is expired or you already use it| Maybe your confirmation token is expired or you already use it@@confirmationTokenExpired">
-                    Maybe your confirmation token is expired or you already use it
+                    i18n=" Maybe your confirmation token is expired or you already use it.| Maybe your confirmation token is expired or you already use it. @@confirmationTokenExpired">
+                    Maybe your confirmation token is expired or you already use it.
                 </p>
+                <div [hidden]="confirmation | async" class="row padding-bottom-18">
+                    <div class="col">
+                        <button mat-raised-button loading-button color="primary" class="full-width"
+                            (click)="resendConfirmationEmail()" [isLoading]="isResendConfirmationEmail"
+                            ii18n="Resend confirmation email|Resend confirmation email button@@resendConfirmationEmail">Resend
+                            confirmation email
+                        </button>
+                    </div>
+                </div>
             </mat-card-content>
         </mat-card>
+        <div class="row padding-top-18">
+            <div class="col text-center">
+                <app-flags-language-select></app-flags-language-select>
+            </div>
+        </div>
     </div>
 </div>

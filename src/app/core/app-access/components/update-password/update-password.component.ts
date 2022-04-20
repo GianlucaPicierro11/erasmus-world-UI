@@ -22,7 +22,7 @@ export class UpdatePasswordComponent implements OnInit {
   user!: string | null;
   token!: string | null;
   form: FormGroup;
-
+  isSavingNewPassword = false;
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private authService: AuthHttpService, private snackbarService: SnackbarService,
     private router: Router, private localeLanguageService: LocaleLanguageService) {
@@ -70,6 +70,7 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   saveNewPassword() {
+    this.isSavingNewPassword = true;
     let newPasswordRequest: NewPasswordRequestModel = {
       password: this.form.get("new-password")?.value,
       token: this.token!,
@@ -83,9 +84,11 @@ export class UpdatePasswordComponent implements OnInit {
         }
       },
       error: (e) => {
-        this.snackbarService.openErrorSnackBar(e.error.error, e.error.error)
+        this.snackbarService.openErrorSnackBar(e.error.error, e.error.error);
+        this.isSavingNewPassword = false;
       },
       complete: () => {
+        this.isSavingNewPassword = false;
       }
     });
 

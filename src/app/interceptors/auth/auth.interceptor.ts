@@ -14,16 +14,6 @@ export class AuthInterceptor implements HttpInterceptor {
     req = req.clone({
       setHeaders: {
         "X-Requested-With": "XMLHttpRequest",
-        "Permissions-Policy": "camera=*,geolocation=*,microphone=*,autoplay=*,fullscreen=*,picture-in-picture=*,sync-xhr=*,encrypted-media=*,oversized-images=*",
-        "Strict-Transport-Security": "max-age=31536000; includeSubdomains",
-        "X-Frame-Options": "SAMEORIGIN",
-        "X-Content-Type-Options": "nosniff",
-        "X-Xss-Protection": "1; mode=block",
-        "Content-Security-Policy": "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://stackpath.bootstrapcdn.com https://code.jquery.com https://cdnjs.com https://cdnjs.cloudflare.com; " +
-          "style-src 'self' 'unsafe-inline' 'unsafe-eval' fonts.gstatic.com fonts.googleapis.com https://stackpath.bootstrapcdn.com https://use.fontawesome.com;" +
-          "object-src 'none';" +
-          "img-src 'self' data: blob:;" +
-          "font-src 'self' data: https://use.fontawesome.com fonts.gstatic.com fonts.googleapis.com ;"
       }
     });
     const token = this.token.getToken();

@@ -19,6 +19,7 @@ import { FacebookLoginProvider } from "angularx-social-login";
 export class LoginComponent implements OnInit {
 
   isLogginIn = false;
+  isLogginInWithFb = false;
   hidePassword = true;
   form: FormGroup;
   logoPath: string = environment.BASE_URL_UI + 'assets/images/ME_full.png';
@@ -41,6 +42,7 @@ export class LoginComponent implements OnInit {
     this.authService.authState.subscribe(
       (socialUser) => {
         if (socialUser) {
+          this.isLogginInWithFb = true;
           this.authHttpService.loginWithFb(socialUser).subscribe(
             {
               next: (data) => {
@@ -51,10 +53,12 @@ export class LoginComponent implements OnInit {
                 this.snackbarService.openErrorSnackBar(e.error.error, e.error.error)
                 this.loginSharedService.pushIsLoggedIn(false);
                 this.loginSharedService.pushIsLoggedOut(true);
+                this.isLogginInWithFb = false;
               },
               complete: () => {
                 this.loginSharedService.pushIsLoggedIn(true);
                 this.loginSharedService.pushIsLoggedOut(false);
+                this.isLogginInWithFb = false;
                 this.router.navigateByUrl(RoutesEnum.HOME);
               }
             });
@@ -77,6 +81,7 @@ export class LoginComponent implements OnInit {
         this.snackbarService.openErrorSnackBar(e.error.error, e.error.error)
         this.loginSharedService.pushIsLoggedIn(false);
         this.loginSharedService.pushIsLoggedOut(true);
+        this.isLogginIn = false;
       },
       complete: () => {
         this.loginSharedService.pushIsLoggedIn(true);

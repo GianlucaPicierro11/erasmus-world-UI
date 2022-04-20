@@ -1,10 +1,10 @@
 <div class="row full-height align-items-center justify-content-center">
-    <div class="col-10 align-self-center text-center">
+    <div class="col align-self-center text-center">
         <div class="card width-card">
             <div class="row">
                 <div class="col-4 left-card font-text-size">
-                    <span class="margin-0 padding-bottom" i18n="ESNcard|ESNcard@@esnCard">ESNcard</span>
-                    <p fxShow fxHide.lt-sm="true"
+                    <strong i18n="ESNcard|ESNcard@@esnCard">ESNcard</strong>
+                    <p class="line-height-10px"
                         i18n="Member of the erasmus generation|Member of the erasmus generation@@memberErasmusGeneration">
                         Member of the erasmus generation</p>
                     <div class="img-card">
@@ -47,12 +47,12 @@
                             <span *ngIf="this.user$ |async ; let user">{{user.birthDate | date: 'dd/MM/yyyy'}}</span>
                         </div>
                     </div>
-                    <div class="row" fxShow fxHide.lt-sm="true">
+                    <div class="row">
                         <div class="col text-left padding-0" i18n="STUDENT AT|STUDENT AT@@studentAtUC">
                             STUDENT AT
                         </div>
                     </div>
-                    <div class="row" fxShow fxHide.lt-sm="true">
+                    <div class="row">
                         <div class="col text-left padding-0 text-background-card">
                             <span *ngIf="this.user$ |async ; let user">{{user.university.university}}</span>
                         </div>
