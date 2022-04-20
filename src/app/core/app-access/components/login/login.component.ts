@@ -18,6 +18,7 @@ import { FacebookLoginProvider } from "angularx-social-login";
 })
 export class LoginComponent implements OnInit {
 
+  isLogginIn = false;
   hidePassword = true;
   form: FormGroup;
   logoPath: string = environment.BASE_URL_UI + 'assets/images/ME_full.png';
@@ -62,6 +63,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void {
+    this.isLogginIn = true;
     let loginRequest: LoginModel = {
       email: this.form.get("email")?.value,
       password: this.form.get("current-password")?.value
@@ -80,6 +82,7 @@ export class LoginComponent implements OnInit {
         this.loginSharedService.pushIsLoggedIn(true);
         this.loginSharedService.pushIsLoggedOut(false);
         this.router.navigateByUrl(RoutesEnum.HOME);
+        this.isLogginIn = false;
       }
     });
   }

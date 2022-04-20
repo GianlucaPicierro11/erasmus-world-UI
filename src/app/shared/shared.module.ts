@@ -23,13 +23,18 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatListModule } from '@angular/material/list';
 import { FlagsLanguageSelectComponent } from './components/flags-language-select/flags-language-select.component';
 import { IconSnackbarComponent } from './components/icon-snackbar/icon-snackbar.component';
+import { LoadingButtonDirective } from './directives/loading-button.directive';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { LoadingSelectDirective } from './directives/loading-select.directive';
 
 @NgModule({
   declarations: [
     UnauthorizedPageComponent,
     PageNotFoundComponent,
     FlagsLanguageSelectComponent,
-    IconSnackbarComponent
+    IconSnackbarComponent,
+    LoadingButtonDirective,
+    LoadingSelectDirective,
   ],
   imports: [
     MatProgressSpinnerModule,
@@ -53,6 +58,7 @@ import { IconSnackbarComponent } from './components/icon-snackbar/icon-snackbar.
     CommonModule,
     MatTooltipModule,
     MatListModule,
+    MatProgressBarModule,
   ],
   exports: [
     //imports
@@ -77,11 +83,14 @@ import { IconSnackbarComponent } from './components/icon-snackbar/icon-snackbar.
     CommonModule,
     MatTooltipModule,
     MatListModule,
+    MatProgressBarModule,
     //declarations
     UnauthorizedPageComponent,
     PageNotFoundComponent,
     FlagsLanguageSelectComponent,
-    IconSnackbarComponent
+    IconSnackbarComponent,
+    LoadingButtonDirective,
+    LoadingSelectDirective
   ]
 })
 

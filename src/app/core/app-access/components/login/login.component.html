@@ -31,8 +31,9 @@
                     </div>
                     <div class="row padding-bottom-18">
                         <div class="col">
-                            <button mat-raised-button color="primary" class="full-width" (click)="login()"
-                                i18n="Login|login button@@login" [disabled]="this.form.invalid">Login</button>
+                            <button mat-raised-button loading-button color="primary" class="full-width"
+                                (click)="login()" i18n="Login|login button@@login" [disabled]="this.form.invalid"
+                                [isLoading]="isLogginIn">Login</button>
                         </div>
                     </div>
                     <mat-divider [inset]="true"></mat-divider>

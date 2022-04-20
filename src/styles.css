@@ -61,10 +61,15 @@ body {
     color: black;
 }
 
-.spinner {
-    top: 50vh;
-    left: 50vw;
-    position: fixed;
+.mat-loading .mat-progress-spinner {
+    position: absolute;
+    top: calc(50% - 10px);
+    left: calc(50% - 10px);
+}
+
+.mat-loading .mat-progress-bar {
+    position: absolute;
+    bottom: 0px;
 }
 
 .dark-overlay {

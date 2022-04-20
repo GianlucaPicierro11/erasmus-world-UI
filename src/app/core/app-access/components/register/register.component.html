@@ -81,7 +81,8 @@
                         <div class="col" fxShow fxHide.lt-sm="true">
                             <mat-form-field class="full-width" appearance="outline">
                                 <mat-label i18n="Nationality *|nationality *@@nationality*">Nationality *</mat-label>
-                                <mat-select formControlName="nationality">
+                                <mat-select loading-select [isLoading]="isLoadingNationalities"
+                                    formControlName="nationality">
                                     <mat-option disabled>
                                         <input matInput #nationalitySearch formControlName="nationalitySearch"
                                             placeholder="Search">
@@ -98,7 +99,8 @@
                         <div class="col">
                             <mat-form-field class="full-width" appearance="outline">
                                 <mat-label i18n="Nationality *|nationality *@@nationality*">Nationality *</mat-label>
-                                <mat-select formControlName="nationality">
+                                <mat-select loading-select [isLoading]="isLoadingNationalities"
+                                    formControlName="nationality">
                                     <mat-option disabled><input matInput #nationalitySearch
                                             formControlName="nationalitySearch" placeholder="Search"></mat-option>
                                     <mat-option #nationality *ngFor="let nationality of filteredNationalities | async"
@@ -113,7 +115,8 @@
                         <div class="col">
                             <mat-form-field class="full-width" appearance="outline">
                                 <mat-label i18n="Student At *|student At *@@studentAt*">Student At *</mat-label>
-                                <mat-select formControlName="university">
+                                <mat-select loading-select [isLoading]="isLoadingUniversities"
+                                    formControlName="university">
                                     <mat-option disabled><input matInput #universitySearch
                                             formControlName="universitySearch" placeholder="Search"></mat-option>
                                     <mat-option #university *ngFor="let university of filteredUniversities"
@@ -125,7 +128,8 @@
                         <div class="col" fxHide.lt-sm="true">
                             <mat-form-field class="full-width" appearance="outline">
                                 <mat-label i18n="ESN Section *|ESN Section *@@esnSection*">ESN Section *</mat-label>
-                                <mat-select formControlName="esnSection">
+                                <mat-select loading-select [isLoading]="isLoadingEsnSections"
+                                    formControlName="esnSection">
                                     <mat-option disabled><input matInput #esnSectionSearch
                                             formControlName="esnSectionSearch" placeholder="Search"></mat-option>
                                     <mat-option #esnSection *ngFor="let esnSection of filteredEsnSections | async"
@@ -139,7 +143,8 @@
                         <div class="col">
                             <mat-form-field class="full-width" appearance="outline">
                                 <mat-label i18n="ESN Section *|ESN Section *@@esnSection*">ESN Section *</mat-label>
-                                <mat-select formControlName="esnSection">
+                                <mat-select loading-select [isLoading]="isLoadingEsnSections"
+                                    formControlName="esnSection">
                                     <mat-option disabled><input matInput #esnSectionSearch
                                             formControlName="esnSectionSearch" placeholder="Search"></mat-option>
                                     <mat-option #esnSection *ngFor="let esnSection of filteredEsnSections | async"
@@ -207,8 +212,8 @@
                     </div>
                     <div class="row padding-bottom-18">
                         <div class="col">
-                            <button mat-raised-button color="primary" class="full-width" (click)="register()"
-                                [disabled]="this.form.invalid"
+                            <button mat-raised-button loading-button color="primary" class="full-width"
+                                (click)="register()" [disabled]="this.form.invalid" [isLoading]="isRegistering"
                                 ii18n="Register|register button@@register">Register</button>
                         </div>
                     </div>

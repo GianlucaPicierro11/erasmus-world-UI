@@ -25,15 +25,19 @@ export class RegisterComponent implements OnInit {
   hidePassword = true;
   hideMatchPassword = true;
   startDate = new Date(1990, 0, 1);
-  isLoadingUniversities = false;
   logoPath: string = environment.BASE_URL_UI + 'assets/images/ME_full.png';
 
+  isLoadingNationalities = false;
   nationalities: NationalityModel[] = [];
   filteredNationalities: Observable<NationalityModel[]> | undefined;
+  isLoadingUniversities = false;
   universities: UniversityModel[] = [];
   filteredUniversities: UniversityModel[] | undefined;
+  isLoadingEsnSections = false;
   esnSections: EsnSectionModel[] = [];
   filteredEsnSections: Observable<EsnSectionModel[]> | undefined;
+
+  isRegistering = false;
 
   constructor(private authService: AuthHttpService, private fb: FormBuilder, private snackbarService: SnackbarService,
     private typologicalService: TypologicalHttpService, private router: Router, private localeLanguageService: LocaleLanguageService) {
@@ -125,8 +129,6 @@ export class RegisterComponent implements OnInit {
   }
 
   getPasswordErrorMessage() {
-    console.log('password', this.form.get('password')?.value)
-    console.log('match-password', this.form.get('match-password')?.value)
     if (this.form.get('password')?.hasError('required')) {
       return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Campo obbligatorio' : 'You must enter a value';
     }
@@ -143,8 +145,6 @@ export class RegisterComponent implements OnInit {
   }
 
   getMatchPasswordErrorMessage() {
-    console.log('password', this.form.get('password')?.value)
-    console.log('match-password', this.form.get('match-password')?.value)
     if (this.form.get('match-password')?.hasError('required')) {
       return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Campo obbligatorio' : 'You must enter a value';
     }
@@ -174,6 +174,7 @@ export class RegisterComponent implements OnInit {
   }
 
   private autocompleteOnNationality() {
+    this.isLoadingNationalities = true;
     this.typologicalService.findAllNationalities().pipe(
       finalize(() => {
         this.filteredNationalities = this.form.get('nationalitySearch')?.valueChanges.pipe(
@@ -181,11 +182,13 @@ export class RegisterComponent implements OnInit {
           map(value => (typeof value === 'string' ? value : value.nationality)),
           map(nationality => (nationality ? this._filterNationalities(nationality) : this.nationalities.slice()))
         );
+        this.isLoadingNationalities = false;
       })
     ).subscribe((nationalities: NationalityModel[]) => this.nationalities = nationalities);
   }
 
   private autocompleteOnUniversity() {
+    this.isLoadingUniversities = true;
     this.form.get('universitySearch')?.valueChanges
       .pipe(
         startWith(''),
@@ -196,13 +199,14 @@ export class RegisterComponent implements OnInit {
       .subscribe(result => {
         this.filteredUniversities = result.filter(el =>
           !this.universities.find((univeristy: any) => {
-            return univeristy.univeristy === univeristy.univeristy;
+            return univeristy.univeristy === el.univeristy;
           })
         );
       });
   }
 
   private autocompleteOnEsnSection() {
+    this.isLoadingEsnSections = true;
     this.typologicalService.findAllEsnsections().pipe(
       finalize(() => {
         this.filteredEsnSections = this.form.get('esnSectionSearch')?.valueChanges.pipe(
@@ -210,6 +214,7 @@ export class RegisterComponent implements OnInit {
           map(value => (typeof value === 'string' ? value : value.section)),
           map(section => (section ? this._filterEsnSections(section) : this.esnSections.slice()))
         );
+        this.isLoadingEsnSections = false;
       })
     ).subscribe((esnSections: EsnSectionModel[]) => this.esnSections = esnSections);
   }
@@ -235,6 +240,8 @@ export class RegisterComponent implements OnInit {
   }
 
   register(): void {
+    this.isRegistering = true;
+
     let signupRequest: SignupRequestModel = {
       name: this.form.get("name")?.value,
       surname: this.form.get("surname")?.value,
@@ -259,6 +266,7 @@ export class RegisterComponent implements OnInit {
         this.snackbarService.openErrorSnackBar(e.error.error, e.error.error);
       },
       complete: () => {
+        this.isRegistering = false;
       }
     });
   }
