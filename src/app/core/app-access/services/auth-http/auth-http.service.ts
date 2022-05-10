@@ -7,9 +7,11 @@ import { SignupRequestModel } from 'app/core/app-access/models/signup-request.mo
 import { JwtResponseModel } from 'app/core/app-access/models/jwt-response.model';
 import { UserModel } from 'app/core/app-access/models/user.model';
 import { NewPasswordRequestModel } from '@core/app-access/models/new-password-request.model';
+import { EditProfileRequestModel } from '@core/app-access/models/edit-profile-request.model';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  //headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+
   //, withCredentials: true
 };
 
@@ -63,5 +65,23 @@ export class AuthHttpService {
 
   loginWithFb(socialUser: any): Observable<JwtResponseModel> {
     return this.http.post<JwtResponseModel>(environment.AUTH_API + 'login/facebook', socialUser, httpOptions);
+  }
+
+  saveProfilePhoto(formData: FormData): Observable<JwtResponseModel> {
+    return this.http.post<JwtResponseModel>(environment.AUTH_API + 'save-profile-photo', formData, httpOptions);
+  }
+
+  removeProfilePhoto(formData: FormData): Observable<JwtResponseModel> {
+    return this.http.post<JwtResponseModel>(environment.AUTH_API + 'remove-profile-photo', formData, httpOptions);
+  }
+
+  editProfile(editProfileRequest: EditProfileRequestModel): Observable<any> {
+    return this.http.post(environment.AUTH_API + 'edit-profile', editProfileRequest, httpOptions);
+  }
+
+  deleteAccount(userId: number): Observable<any> {
+    let params;
+    params = new HttpParams().set("userId", userId);
+    return this.http.delete(environment.AUTH_API + `delete-account`, { params });
   }
 }

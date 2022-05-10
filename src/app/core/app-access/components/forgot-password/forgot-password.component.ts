@@ -13,7 +13,7 @@ import { RoutesEnum } from 'app/shared/enumerations/routes.enum';
 })
 export class ForgotPasswordComponent implements OnInit {
   form: FormGroup;
-  logoPath: string = environment.BASE_URL_UI + 'assets/images/ME_full.png';
+  logoPath: string = environment.BASE_URL_UI + 'assets/images/ME_full_black.png';
   isSendingLoginLink = false;
 
   constructor(private fb: FormBuilder, private authService: AuthHttpService, private snackbarService: SnackbarService, private router: Router) {

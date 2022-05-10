@@ -1,0 +1,16 @@
+.icon-dimension {
+    width: 88px;
+    height: 85.2px;
+    font-size: 85px;
+}
+
+.img-dimension {
+    width: 88px;
+    height: 122.2px;
+}
+
+.text-dimension {
+    max-width: 88px;
+    text-align: center !important;
+    font-size: x-small;
+}

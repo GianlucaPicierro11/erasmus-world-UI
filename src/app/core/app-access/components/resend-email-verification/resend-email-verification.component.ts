@@ -11,7 +11,7 @@ import { SnackbarService } from 'app/shared/services/snackbar/snackbar.service';
 })
 export class ResendEmailVerificationComponent implements OnInit {
 
-  logoPath: string = environment.BASE_URL_UI + 'assets/images/ME_full.png';
+  logoPath: string = environment.BASE_URL_UI + 'assets/images/ME_full_black.png';
   email: string | null;
   isSendingNewEmail = false;
 

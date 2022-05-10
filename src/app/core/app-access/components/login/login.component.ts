@@ -8,8 +8,7 @@ import { LoginSharedService } from 'app/shared/services/login-shared/login-share
 import { SnackbarService } from 'app/shared/services/snackbar/snackbar.service';
 import { TokenStorageService } from 'app/shared/services/token-storage/token-storage.service';
 import { environment } from '@env/environment';
-import { SocialAuthService } from "angularx-social-login";
-import { FacebookLoginProvider } from "angularx-social-login";
+import { SocialAuthService, FacebookLoginProvider } from "angularx-social-login";
 
 @Component({
   selector: 'app-login',
@@ -22,7 +21,7 @@ export class LoginComponent implements OnInit {
   isLogginInWithFb = false;
   hidePassword = true;
   form: FormGroup;
-  logoPath: string = environment.BASE_URL_UI + 'assets/images/ME_full.png';
+  logoPath: string = environment.BASE_URL_UI + 'assets/images/ME_full_black.png';
 
   constructor(private authHttpService: AuthHttpService, private tokenStorage: TokenStorageService,
     private fb: FormBuilder, private router: Router, private loginSharedService: LoginSharedService, private snackbarService: SnackbarService,

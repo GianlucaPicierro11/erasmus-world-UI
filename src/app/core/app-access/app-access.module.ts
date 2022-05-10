@@ -13,6 +13,7 @@ import { DataPolicyComponent } from './components/data-policy/data-policy.compon
 import { CookiesPolicyComponent } from './components/cookies-policy/cookies-policy.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { ResendEmailVerificationComponent } from './components/resend-email-verification/resend-email-verification.component';
+import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ResendEmailVerificationComponent } from './components/resend-email-veri
     DataPolicyComponent,
     CookiesPolicyComponent,
     EditProfileComponent,
-    ResendEmailVerificationComponent
+    ResendEmailVerificationComponent,
+    DeleteAccountComponent
   ],
   imports: [
     SharedModule,

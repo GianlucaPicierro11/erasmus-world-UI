@@ -9,6 +9,7 @@ export enum RoutesEnum {
     TERM_OF_USE = 'term-of-use',
     DATA_POLICY = 'data-policy',
     COOKIES_POLICY = 'cookies-policy',
-    EDIT_PROFILE = 'edit-profile'
+    EDIT_PROFILE = 'edit-profile',
+    DELETE_ACCOUNT = 'delete-account'
 
 }

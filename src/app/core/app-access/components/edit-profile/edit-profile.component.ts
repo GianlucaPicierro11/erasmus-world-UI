@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { EditProfileRequestModel } from '@core/app-access/models/edit-profile-request.model';
 import { EsnSectionModel } from '@core/app-access/models/esnsection.model';
 import { NationalityModel } from '@core/app-access/models/nationality.model';
 import { UniversityModel } from '@core/app-access/models/university.model';
 import { UserModel } from '@core/app-access/models/user.model';
 import { AuthHttpService } from '@core/app-access/services/auth-http/auth-http.service';
+import { ImageService } from '@core/app-access/services/image-service/image.service';
 import { LanguageLocaleIdEnum } from 'app/shared/enumerations/language-locale-id.enum';
 import { LocaleLanguageService } from 'app/shared/services/locale-language/locale-language.service';
+import { SnackbarService } from 'app/shared/services/snackbar/snackbar.service';
 import { TokenStorageService } from 'app/shared/services/token-storage/token-storage.service';
 import { TypologicalHttpService } from 'app/shared/services/typological-http/typological-http.service';
 import * as moment from 'moment';
@@ -30,13 +34,14 @@ export class EditProfileComponent implements OnInit {
   filteredUniversities: UniversityModel[] | undefined;
   esnSections: EsnSectionModel[] = [];
   filteredEsnSections: Observable<EsnSectionModel[]> | undefined;
+  isSaving: boolean = false;
 
   constructor(private fb: FormBuilder, private localeLanguageService: LocaleLanguageService, private typologicalService: TypologicalHttpService,
-    private authHttpService: AuthHttpService, private tokenStorageService: TokenStorageService) {
+    private authHttpService: AuthHttpService, private tokenStorageService: TokenStorageService, private imageService: ImageService,
+    private snackbarService: SnackbarService) {
     this.form = fb.group({
       name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
       surname: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
-      email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(50)]),
       phone: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
       birthDate: new FormControl('', [Validators.required, this.dateValidator]),
       nationalitySearch: new FormControl(""),
@@ -71,19 +76,6 @@ export class EditProfileComponent implements OnInit {
     }
     if (this.form.get('surname')?.hasError('maxlength')) {
       return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Non è possibile inserire più di 20 caratteri' : 'You must enter less than 20 caracters';
-    }
-    return '';
-  }
-
-  getEmailErrorMessage() {
-    if (this.form.get('email')?.hasError('required')) {
-      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Campo obbligatorio' : 'You must enter a value';
-    }
-    if (this.form.get('email')?.hasError('email')) {
-      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Email non valida' : 'Not a valid email';
-    }
-    if (this.form.get('email')?.hasError('maxlength')) {
-      return this.localeLanguageService.getLanguage() === LanguageLocaleIdEnum.ITALIAN ? 'Non è possibile inserire più di 50 caratteri' : 'You must enter less than 50 caracters';
     }
     return '';
   }
@@ -211,6 +203,34 @@ export class EditProfileComponent implements OnInit {
   }
 
   save() {
+    this.isSaving = true;
+    let editProfileRequest: EditProfileRequestModel = {
+      id: this.tokenStorageService.getUser()?.id!,
+      name: this.form.get("name")?.value,
+      surname: this.form.get("surname")?.value,
+      phone: this.form.get("phone")?.value,
+      birthDate: this.form.get("birthDate")?.value,
+      nationalityId: this.form.get("nationality")?.value.id,
+      universityId: this.form.get("university")?.value.id,
+      esnSectionId: this.form.get("esnSection")?.value.id,
+      nrEsnCard: this.form.get("nrEsnCard")?.value,
+    };
 
+    this.authHttpService.editProfile(editProfileRequest).subscribe(
+      {
+        next: (data) => {
+          if (data) {
+            this.snackbarService.openSuccessSnackBar("Profile updated", "Profilo aggiornato");
+          }
+        },
+        error: (e) => {
+          this.snackbarService.openErrorSnackBar(e.error.error, e.error.error);
+          this.isSaving = false;
+        },
+        complete: () => {
+          this.isSaving = false;
+        }
+      }
+    );
   }
 }

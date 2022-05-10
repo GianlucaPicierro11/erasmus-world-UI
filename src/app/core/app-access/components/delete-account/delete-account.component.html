@@ -1,0 +1,17 @@
+<div class="row padding-top-18 full-height align-items-center justify-content-center">
+    <div class="col-10 align-self-center">
+        <h1 i18n="Delete Account|delete account@@deleteAccount">Delete Account</h1>
+        <div class="row padding-bottom-18">
+            <div class="col text-center"
+                i18n="Are you sure? click on the delete button you will lose your data.|Are you sure? click on the delete button you will lose your data.@@areSureClickDeleteLoseData.">
+                Are you sure? clicking on the delete button you will lose your data.
+            </div>
+        </div>
+        <div class="row padding-bottom-18">
+            <div class="col">
+                <button mat-raised-button loading-button [isLoading]="isDeleting" color="primary" class="full-width"
+                    (click)="deleteAccount()" ii18n="Delete|Delete button@@delete">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

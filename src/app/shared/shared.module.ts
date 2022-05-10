@@ -26,6 +26,10 @@ import { IconSnackbarComponent } from './components/icon-snackbar/icon-snackbar.
 import { LoadingButtonDirective } from './directives/loading-button.directive';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { LoadingSelectDirective } from './directives/loading-select.directive';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { ImgUploadComponent } from './components/img-upload/img-upload.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ImgUploadDialogComponent } from './components/img-upload-dialog/img-upload-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +39,8 @@ import { LoadingSelectDirective } from './directives/loading-select.directive';
     IconSnackbarComponent,
     LoadingButtonDirective,
     LoadingSelectDirective,
+    ImgUploadComponent,
+    ImgUploadDialogComponent,
   ],
   imports: [
     MatProgressSpinnerModule,
@@ -59,6 +65,8 @@ import { LoadingSelectDirective } from './directives/loading-select.directive';
     MatTooltipModule,
     MatListModule,
     MatProgressBarModule,
+    ImageCropperModule,
+    MatDialogModule,
   ],
   exports: [
     //imports
@@ -84,13 +92,16 @@ import { LoadingSelectDirective } from './directives/loading-select.directive';
     MatTooltipModule,
     MatListModule,
     MatProgressBarModule,
+    ImageCropperModule,
+    MatDialogModule,
     //declarations
     UnauthorizedPageComponent,
     PageNotFoundComponent,
     FlagsLanguageSelectComponent,
     IconSnackbarComponent,
     LoadingButtonDirective,
-    LoadingSelectDirective
+    LoadingSelectDirective,
+    ImgUploadComponent,
   ]
 })
 

@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
   hidePassword = true;
   hideMatchPassword = true;
   startDate = new Date(1990, 0, 1);
-  logoPath: string = environment.BASE_URL_UI + 'assets/images/ME_full.png';
+  logoPath: string = environment.BASE_URL_UI + 'assets/images/ME_full_black.png';
 
   isLoadingNationalities = false;
   nationalities: NationalityModel[] = [];

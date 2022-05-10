@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="col padding-0">
+        <button mat-raised-button class="padding-0" (click)="openDialog()"
+            [ngStyle]="{'background-color': color ? color : null,'color':color? 'white':'black' }">
+            <mat-icon class="icon-dimension" *ngIf="!image">person</mat-icon>
+            <p *ngIf="!image"><a class="text-dimension" i18n="Upload your photo|Upload your photo@@uploadYourPhoto">
+                    Upload your photo
+                </a></p>
+            <img *ngIf="image" class="img-dimension" [attr.src]="image" alt="image">
+        </button>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<h3 mat-dialog-title align="center">Change Profile Photo</h3>
+<div mat-dialog-content>
+    <div class="row" *ngIf="imgChangeEvt">
+        <div class="col text-center">
+            <image-cropper style="max-width: 200px;" [imageChangedEvent]="imgChangeEvt" [maintainAspectRatio]="true"
+                [aspectRatio]="3 / 4" [resizeToWidth]="256" format="png" (imageCropped)="cropImg($event)"
+                (imageLoaded)="imgLoad()" (cropperReady)="initCropper()" (loadImageFailed)="imgFailed()">
+            </image-cropper>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="row padding-top-18 padding-bottom-18">
+        <div class="col text-center">
+            <a (click)="clickFileInput()"><strong> Upload your photo </strong></a>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div *ngIf="image" class="row padding-top-18 padding-bottom-18">
+        <div class="col text-center">
+            <a (click)="removeCurrentPhoto()"> <strong class="red-color">Remove current photo</strong></a>
+        </div>
+    </div>
+    <mat-divider *ngIf="image"></mat-divider>
+    <input #input type="file" (change)="onFileChange($event)" style="max-width: 200px;" id="file" />
+</div>
+<div mat-dialog-actions align="center">
+    <button mat-button (click)="onCancelClick()">Cancel</button>
+    <button mat-button (click)="onOkClick()" cdkFocusInitial>Ok</button>
+</div>

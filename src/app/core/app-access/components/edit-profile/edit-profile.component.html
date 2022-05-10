@@ -1,6 +1,11 @@
 <div class="row padding-top-18 full-height align-items-center justify-content-center">
     <div class="col-10 align-self-center">
         <form [formGroup]="form">
+            <div class="row align-items-center padding-bottom-18">
+                <div class="col">
+                    <app-img-upload></app-img-upload>
+                </div>
+            </div>
             <div class="row">
                 <div class="col">
                     <mat-form-field appearance="outline" class="full-width">
@@ -27,13 +32,6 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col">
-                    <mat-form-field appearance="outline" class="full-width">
-                        <mat-label i18n="Email *|email *@@email*">E-mail *</mat-label>
-                        <input matInput #email formControlName="email" autocomplete="email" maxlength="50">
-                        <mat-error *ngIf="form.get('email')?.invalid">{{getEmailErrorMessage()}}</mat-error>
-                    </mat-form-field>
-                </div>
                 <div class="col" fxShow fxHide.lt-sm="true">
                     <mat-form-field appearance="outline" class="full-width">
                         <mat-label i18n="Phone *|phone *@@phone*">Phone *</mat-label>
@@ -143,8 +141,8 @@
             </div>
             <div class="row padding-bottom-18">
                 <div class="col">
-                    <button mat-raised-button color="primary" class="full-width" (click)="save()"
-                        [disabled]="this.form.invalid" ii18n="Save|Save button@@save">Save</button>
+                    <button mat-raised-button loading-button [isLoading]="isSaving" color="primary" class="full-width"
+                        (click)="save()" [disabled]="this.form.invalid" ii18n="Save|Save button@@save">Save</button>
                 </div>
             </div>
         </form>

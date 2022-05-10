@@ -13,7 +13,7 @@ import { environment } from '@env/environment';
 })
 export class ConfirmRegistrationComponent implements OnInit {
 
-  logoPath: string = environment.BASE_URL_UI + 'assets/images/ME_full.png';
+  logoPath: string = environment.BASE_URL_UI + 'assets/images/ME_full_black.png';
   user!: string | null;
   token!: string | null;
   confirmation: Subject<boolean> = new BehaviorSubject<boolean>(false);

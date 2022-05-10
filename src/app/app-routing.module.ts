@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CookiesPolicyComponent } from '@core/app-access/components/cookies-policy/cookies-policy.component';
 import { DataPolicyComponent } from '@core/app-access/components/data-policy/data-policy.component';
+import { DeleteAccountComponent } from '@core/app-access/components/delete-account/delete-account.component';
 import { EditProfileComponent } from '@core/app-access/components/edit-profile/edit-profile.component';
 import { ForgotPasswordComponent } from '@core/app-access/components/forgot-password/forgot-password.component';
 import { ResendEmailVerificationComponent } from '@core/app-access/components/resend-email-verification/resend-email-verification.component';
@@ -36,6 +37,7 @@ const appRoutes: Routes = [
       { path: RoutesEnum.DATA_POLICY, component: DataPolicyComponent },
       { path: RoutesEnum.COOKIES_POLICY, component: CookiesPolicyComponent },
       { path: RoutesEnum.EDIT_PROFILE, component: EditProfileComponent },
+      { path: RoutesEnum.DELETE_ACCOUNT, component: DeleteAccountComponent },
 
       { path: 'unauthorized', pathMatch: 'full', component: UnauthorizedPageComponent },
       { path: '**', pathMatch: 'full', component: PageNotFoundComponent },
